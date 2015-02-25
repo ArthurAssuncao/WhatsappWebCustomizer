@@ -1,0 +1,22 @@
+{
+    "name": {
+        "message": "Whatsapp Web customizer",
+        "description": "Extension name"
+    },
+    "description": {
+        "message": "Customize your Whatsapp Web",
+        "description": "Extension description"
+    },
+    "btn_change_bg": {
+        "message": "Change background",
+        "description": "Change background button"
+    },
+    "textfield_holder": {
+        "message": "Image URL",
+        "description": "Text field placeholder message"
+    },
+    "remover_bg_pergunta": {
+        "message": "Remove background?",
+        "description": "Remove background answer"
+    }
+}
