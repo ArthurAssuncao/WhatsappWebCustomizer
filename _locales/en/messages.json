@@ -1,10 +1,10 @@
 {
     "name": {
-        "message": "Whatsapp Web customizer",
+        "message": "Wpp Web customizer",
         "description": "Extension name"
     },
     "description": {
-        "message": "Customize your Whatsapp Web",
+        "message": "Customize your Wpp Web",
         "description": "Extension description"
     },
     "btn_change_bg": {

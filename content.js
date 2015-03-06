@@ -6,7 +6,7 @@
 //http://stackoverflow.com/questions/24199119/load-an-external-image-in-img-tag-in-a-chrome-app
 //https://github.com/StylishThemes/GitHub-Dark/issues/188
 
-console.log("Extensao Whatsapp Web Customizer");
+console.log("Extensao Wpp Web Customizer");
 bg_global = "bg_global";
 
 setStyleRule = function(selector, rule) {
