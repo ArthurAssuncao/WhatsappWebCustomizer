@@ -6,22 +6,22 @@ Envie a imagem para alguém pela interface web, clique na imagem, copie o link d
 Este procedimento é necessário, pois dia 24/12/2014 o Whatsapp Web passou a bloquear via CSP conteúdos de sites de terceiros, sendo aceito apenas dos servidores nos domínios whatsapp.net e whatsapp.com.
 
 ##Funções:
-★ Modifica o fundo (background) do chat
+- Modifica o fundo (background) do chat
 
 ##Change log:
 0.1.3
-★ Adicionado botão para remover fundo
-★ Melhorias no uso de memória
+- Adicionado botão para remover fundo
+- Melhorias no uso de memória
 
 0.1.2
-★ Adaptação à restrição CSP
-★ Correções de bugs
+- Adaptação à restrição CSP
+- Correções de bugs
 
 0.1.1
-★ Correções de bugs
+- Correções de bugs
 
 0.1.0
-★ Extensão criada
+- Extensão criada
 
 ### TRADEMARKS
 
