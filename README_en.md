@@ -6,22 +6,22 @@ Send to image to someone friend in Whatsapp Web, click in image, copy link addre
 Note: This is necessary because Whatsapp Web blocks with CSP, then only accept images from Whatsapp.com and Whatsapp.net
 
 ##Features:
-★ Change the chat background
+- Change the chat background
 
 ##Change log:
 0.1.3
-★ Add remove backgrond button
-★ Improvement in used memory
+- Add remove backgrond button
+- Improvement in used memory
 
 0.1.2
-★ Adapted to the CSP constraint
-★ Bug fixes
+- Adapted to the CSP constraint
+- Bug fixes
 
 0.1.1
-★ Bug fixes
+- Bug fixes
 
 0.1.0
-★ Created extension
+- Created extension
 
 
 ### TRADEMARKS
