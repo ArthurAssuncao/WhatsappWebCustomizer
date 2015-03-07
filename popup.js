@@ -6,12 +6,20 @@ document.addEventListener('DOMContentLoaded', function () {
 	botao_remove_bg.addEventListener("click", remove_bg);
 	var botao_msg = chrome.i18n.getMessage("btn_change_bg");
 	var placeholder_msg = chrome.i18n.getMessage("textfield_holder");
+	var msg_erro = chrome.i18n.getMessage("textfield_msg_erro");
 	botao_add_bg.innerText = botao_msg;
 	campo_texto.placeholder = placeholder_msg;
+	campo_texto.title = msg_erro;
 });
 
 function add_bg(){
-	chrome.runtime.getBackgroundPage(mudar_fundo);
+	var campo_texto = document.getElementById("image-link");
+	if(campo_texto.checkValidity()){
+		chrome.runtime.getBackgroundPage(mudar_fundo);
+	}
+	else{
+		alert(campo_texto.title);
+	}
 };
 
 function mudar_fundo(bg){

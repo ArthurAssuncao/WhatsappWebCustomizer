@@ -15,6 +15,10 @@
         "message": "URL da imagem",
         "description": "Placeholder do campo de texto"
     },
+    "textfield_msg_erro": {
+        "message": "Imagem deve estar hospedada no whatsapp.net ou whatsapp.com, envie uma imagem para um amigo e pela interface web copie a url da imagem e cole no campo de texto.",
+        "description": "Title messagem erro do campo de texto"
+    },
     "remover_bg_pergunta": {
         "message": "Remover background?",
         "description": "Remover background pergunta"

@@ -15,6 +15,10 @@
         "message": "Image URL",
         "description": "Text field placeholder message"
     },
+    "textfield_msg_erro": {
+        "message": "Image must has hosted in whatsapp.net or whatsapp.com, send a image to friend and from web interface copy link address and paste in text field.",
+        "description": "Text field title message erro"
+    },
     "remover_bg_pergunta": {
         "message": "Remove background?",
         "description": "Remove background answer"
