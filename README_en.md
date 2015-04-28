@@ -9,6 +9,9 @@ Send to image to someone friend in Whatsapp Web, click in image, copy link addre
 Note: This is necessary because Whatsapp Web blocks with CSP, then only accept images from Whatsapp.com and Whatsapp.net
 
 ##Change log:
+0.1.7
+- Adjusted to the new HTML code of the site
+
 0.1.6
 - Add message of incorrect url
 - Change icon

@@ -8,6 +8,7 @@
 
 console.log("Extensao Wpp Web Customizer");
 bg_global = "bg_global";
+seletor_painel_chat = ".pane-body.pane-chat-body"
 
 setStyleRule = function(selector, rule) {
     var stylesheet = document.styleSheets[(document.styleSheets.length - 1)];
@@ -24,7 +25,7 @@ function set_fundo_global(img_url){
         '-webkit-background-size: cover;' + 
         'background-size: cover;'
     ;
-    setStyleRule('#pane-main', regra_css);
+    setStyleRule(seletor_painel_chat, regra_css);
     var storage = chrome.storage.local;
     var obj = {};
     obj[bg_global] = img_url;
@@ -40,7 +41,7 @@ function remove_fundo_global(){
         '-webkit-background-size: cover;' + 
         'background-size: cover;'
         ;
-        setStyleRule('#pane-main', regra_css);
+        setStyleRule(seletor_painel_chat, regra_css);
     });
 }
 

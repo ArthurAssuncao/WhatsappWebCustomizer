@@ -9,6 +9,9 @@ Envie a imagem para alguém pela interface web, clique na imagem, copie o link d
 Este procedimento é necessário, pois dia 24/12/2014 o Whatsapp Web passou a bloquear via CSP conteúdos de sites de terceiros, sendo aceito apenas dos servidores nos domínios whatsapp.net e whatsapp.com.
 
 ##Change log:
+0.1.7
+- Ajustado ao novo código HTML do site
+
 0.1.6
 - Adicionado aviso de url incorreta
 - Modificado icone
