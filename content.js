@@ -23,7 +23,8 @@ function set_fundo_global(img_url){
     var regra_css = ''+
         'background-image: url(' + img_url + ');' + 
         '-webkit-background-size: cover;' + 
-        'background-size: cover;'
+        'background-size: cover;' +
+        'background-position: center;'
     ;
     setStyleRule(seletor_painel_chat, regra_css);
     var storage = chrome.storage.local;
