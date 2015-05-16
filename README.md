@@ -1,6 +1,9 @@
 # Wpp web Customizador
 Personaliza o Whatsapp™ Web.
 
+## URL para instalar no Google Chrome
+[WPP Web Customizer na Google Chrome Store](https://chrome.google.com/webstore/detail/wpp-web-customizer/lhaamjcmnafobcjjcjfpglfonpdkoedb)
+
 ##Funções:
 - Modifica o fundo (background) do chat
 
