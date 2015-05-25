@@ -11,6 +11,9 @@ Customize the Whatsapp™ Web.
 Send to image to someone friend in Whatsapp Web, click in image, copy link address, click in Wpp web customizer icon, paste link and click in Change Background.
 Note: This is necessary because Whatsapp Web blocks with CSP, then only accept images from Whatsapp.com and Whatsapp.net
 
+##Screenshot
+![Screenshot](https://github.com/ArthurAssuncao/WhatsappWebCustomizer/blob/master/screenshots/wpp_web_customizer_01.png?raw=true "Screenshot")
+
 ##Change log:
 0.1.8
 - Fixed background centralization
