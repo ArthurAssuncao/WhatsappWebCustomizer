@@ -1,20 +1,20 @@
-# Wpp web Customizer
+# Wpp web Customizer ![Wpp web Customizer logo](https://raw.githubusercontent.com/ArthurAssuncao/WhatsappWebCustomizer/master/icon48.png?raw=true "Wpp web Customizer logo")
 Customize the Whatsapp™ Web.
 
-## URL to install in Google Chrome
-[WPP Web Customizer in Google Chrome Store](https://chrome.google.com/webstore/detail/wpp-web-customizer/lhaamjcmnafobcjjcjfpglfonpdkoedb)
+## URL para instalar no Google Chrome
+[<img src="http://www.google.com/intl/pt-BR/chrome/assets/consumer/images/delorean/122010_webstore.jpg" height=30px />  WPP Web Customizer na Google Chrome Store](https://chrome.google.com/webstore/detail/wpp-web-customizer/lhaamjcmnafobcjjcjfpglfonpdkoedb)
 
-##Features:
+## Features:
 - Change the chat background
 
-##How to use:
+## ow to use:
 Send to image to someone friend in Whatsapp Web, click in image, copy link address, click in Wpp web customizer icon, paste link and click in Change Background.
 Note: This is necessary because Whatsapp Web blocks with CSP, then only accept images from Whatsapp.com and Whatsapp.net
 
-##Screenshot
+## Screenshot
 ![Screenshot](https://github.com/ArthurAssuncao/WhatsappWebCustomizer/blob/master/screenshots/wpp_web_customizer_01.png?raw=true "Screenshot")
 
-##Change log:
+## Change log:
 0.1.8
 - Fixed background centralization
 
