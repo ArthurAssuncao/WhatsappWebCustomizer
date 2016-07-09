@@ -3,20 +3,42 @@
 // found in the LICENSE file.
 //http://stackoverflow.com/questions/265984/how-to-redefine-css-classes-with-javascript
 
-/* A function creator for callbacks */
-function doStuffWithDOM(domContent) {
-    console.log("I received the following DOM content:\n" + domContent);
-}
+"use strict";
 
-set_fundo = function(img_url){
-    console.log(img_url);
+var constants = {
+    BG_GLOBAL: {add: "addBgGlobal", remove: "removeBgGlobal"},
+    BG_GLOBAL_TOP: {add: "addBgGlobalTop", remove: "removeBgGlobalTop"},
+    BG_CHAT: {add: "addBgChat", remove: "removeBgChat"},
+    BG_PANEL_HEADER: {add: "addBgPanelHeader", remove: "removeBgPanelHeader"},
+    BG_PANEL_MESSAGE: {add: "addBgPanelMessage", remove: "removeBgPanelMessage"},
+    BG_MESSAGE_IN: {add: "addBgMessageIn", remove: "removeBgMessageIn"},
+    BG_MESSAGE_OUT: {add: "addBgMessageOut", remove: "removeBgMessageOut"},
+    TEXT_MESSAGE_IN: {add: "addTextMessageIn", remove: "removeTextMessageIn"},
+    TEXT_MESSAGE_OUT: {add: "addTextMessageOut", remove: "removeTextMessageOut"},
+
+    DELETE_CONFIG: "deleteStorage"
+}
+chrome.storage.sync.set(constants, function() {
+    console.log("constants saved");
+});
+
+
+// Active icon
+chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
+    if(tab.url)
+        if (tab.url.indexOf("https://web.whatsapp.com/") == 0) {
+            chrome.pageAction.show(tabId);
+        }
+});
+
+function sendMessage(message, callback){
+    callback = callback || function(resp){};
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
-        chrome.tabs.sendMessage(tabs[0].id, {tipo: 'fundo', img: img_url}, function(response) {});  
+        chrome.tabs.sendMessage(tabs[0].id, message, callback);
     });
 }
 
-remove_fundo = function(){
-    chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
-        chrome.tabs.sendMessage(tabs[0].id, {tipo: 'fundo_remover', img: img_url}, function(response) {});  
-    });
+var backgroundFunction = function(opt, val){
+    var msg = {option: opt, values: val};
+    sendMessage(msg);
 }

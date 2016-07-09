@@ -23,7 +23,7 @@
     "scripts": ["background.js"],
     "persistent": false
   },
-  "browser_action": {
+  "page_action": {
     "default_title": "__MSG_name__",
     "default_icon": "icon32.png",
     "default_popup": "popup.html"

@@ -1,57 +1,190 @@
 <!doctype html>
 <html>
-  <head>
-    <title>Wpp Web Customizer Popup</title>
-    <script src="popup.js"></script>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <style>
-    body{
-      min-width: 500px;
-    }
-/*    div#outer{
-      width:100%;
-      height:100%;
-      display:box;
-      box-orient:horizontal;
-      box-pack:center;
-      box-align:center;
-    }*/
-    div#container{
-      margin: 0 auto;
-      margin: 2px;
-    }
-    .tab_wpp_web{
-      /*visibility: hidden;
-      display: none;*/
-    }
-    .not_tab_wpp_web{
-      visibility: hidden;
-      display: none;
-    }
-    </style>
-  </head>
-  <body>
-    <div id="outer">
-      <div id="container">
-      <div class="row not_tab_wpp_web">
-        <div class="col-lg-8 col-lg-offset-3">
-          <button id="botao_open_wpp" class="btn btn-default" type="button">Abrir Whatsapp Web</button>
+    <head>
+        <title>Wpp Web Customizer Popup</title>
+        <meta charset="utf-8">
+        <script src="popup.js"></script>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            body{
+                min-width: 500px;
+            }
+    /*    div#outer{
+                width:100%;
+                height:100%;
+                display:box;
+                box-orient:horizontal;
+                box-pack:center;
+                box-align:center;
+            }*/
+            div#container{
+                margin: 0 auto;
+                margin: 2px;
+            }
+            .tab_wpp_web{
+                /*visibility: hidden;
+                display: none;*/
+            }
+            .not_tab_wpp_web{
+                visibility: hidden;
+                display: none;
+            }
+            .row-margin{
+                margin-top: 5px;
+                margin-bottom: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="outer">
+            <div id="container">
+                <div class="row row-margin not_tab_wpp_web">
+                    <div class="col-lg-8 col-lg-offset-3">
+                        <button id="botao_open_wpp" class="btn btn-default" type="button">Abrir Whatsapp Web</button>
+                    </div>
+                </div>
+
+                <div class="row row-margin tab_wpp_web">
+                    <div class="col-lg-8">
+                        <div class="input-group">
+                            <span class="input-group-btn">
+                                <button id="btn_add_bg" class="btn btn-success" type="button">Mudar fundo</button>
+                            </span>
+                            <input required id="url_bg" type="url" class="form-control" pattern="https?://.+" title="Imagem deve estar hospedada no whatsapp.net ou whatsapp.com, envie uma imagem para um amigo e pela interface web copie a url da imagem e cole aqui">
+                            <span class="input-group-btn">
+                                <button id="btn_del_bg" class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-margin tab_wpp_web">
+                    <div class="col-lg-8">
+                        <div class="input-group">
+                            <span class="input-group-btn">
+                                <button id="btn_add_bg_top" class="btn btn-success" type="button">Mudar fundo Topo</button>
+                            </span>
+                            <input required id="url_bg_top" type="url" class="form-control" pattern="https?://.+" title="">
+                            <span class="input-group-btn">
+                                <button id="btn_del_bg_top" class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-margin tab_wpp_web">
+                    <div class="col-lg-8">
+                        <div class="input-group">
+                            <span class="input-group-btn">
+                                <button id="btn_add_bg_chat" class="btn btn-success" type="button">Mudar fundo Chat</button>
+                            </span>
+                            <input required id="url_bg_chat" type="url" class="form-control" pattern="https?://.+" title="">
+                            <span class="input-group-btn">
+                                <button id="btn_del_bg_chat" class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-margin tab_wpp_web">
+                    <div class="col-lg-8">
+                        <div class="input-group">
+                            <span class="input-group-btn">
+                                <button id="btn_add_bg_panelheader" class="btn btn-success" type="button">Mudar fundo Painel</button>
+                            </span>
+                            <input required id="url_bg_panelheader" type="url" class="form-control" pattern="https?://.+" title="">
+                            <span class="input-group-btn">
+                                <button id="btn_del_bg_panelheader" class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-margin tab_wpp_web">
+                    <div class="col-lg-8">
+                        <div class="input-group">
+                            <span class="input-group-btn">
+                                <button id="btn_add_bg_panelmessage" class="btn btn-success" type="button">Mudar fundo Painel de Mensagem</button>
+                            </span>
+                            <input required id="url_bg_panelmessage" type="url" class="form-control" pattern="https?://.+" title="">
+                            <span class="input-group-btn">
+                                <button id="btn_del_bg_panelmessage" class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-margin tab_wpp_web">
+                    <div class="col-lg-8">
+                        <div class="input-group">
+                            <span class="input-group-btn">
+                                <button id="btn_add_bg_messagein" class="btn btn-success" type="button">Mudar fundo Mensagem Recebida</button>
+                            </span>
+                            <input required id="url_bg_messagein" type="url" class="form-control" pattern="https?://.+" title="">
+                            <span class="input-group-btn">
+                                <button id="btn_del_bg_messagein" class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-margin tab_wpp_web">
+                    <div class="col-lg-8">
+                        <div class="input-group">
+                            <span class="input-group-btn">
+                                <button id="btn_add_bg_messageout" class="btn btn-success" type="button">Mudar fundo Mensagem Enviada</button>
+                            </span>
+                            <input required id="url_bg_messageout" type="url" class="form-control" pattern="https?://.+" title="">
+                            <span class="input-group-btn">
+                                <button id="btn_del_bg_messageout" class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-margin tab_wpp_web">
+                    <div class="col-lg-8">
+                        <div class="input-group">
+                            <span class="input-group-btn">
+                                <button id="btn_add_text_messagein" class="btn btn-success" type="button">Mudar cor Mensagem Recebida</button>
+                            </span>
+                            <input required id="url_text_messagein" type="url" class="form-control" pattern="https?://.+" title="">
+                            <span class="input-group-btn">
+                                <button id="btn_del_text_messagein" class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-margin tab_wpp_web">
+                    <div class="col-lg-8">
+                        <div class="input-group">
+                            <span class="input-group-btn">
+                                <button id="btn_add_text_messageout" class="btn btn-success" type="button">Mudar cor Mensagem Enviada</button>
+                            </span>
+                            <input required id="url_text_messageout" type="url" class="form-control" pattern="https?://.+" title="">
+                            <span class="input-group-btn">
+                                <button id="btn_del_text_messageout" class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-margin tab_wpp_web">
+                    <div class="col-lg-8">
+                        <button id="btn_delete_config" class="btn btn-danger" type="button">Deletar Configurações</button>
+                    </div>
+                </div>
+
+                <div class="row row-margin not_tab_wpp_web">
+                    <div class="col-lg-8">
+                        <input id="btn_img" type="file" class="btn btn-success">
+                        <p id="b64"></p>
+                        <img id="img">
+                    </div>
+                </div>
+
+            </div>
         </div>
-      </div>
-        <div class="row tab_wpp_web">
-          <div class="col-lg-8">
-            <div class="input-group">
-              <span class="input-group-btn">
-                <button id="botao_add_bg" class="btn btn-success" type="button">Mudar fundo</button>
-              </span>
-              <input required id="image-link" type="url" class="form-control" pattern="https?://.+" title="Imagem deve estar hospedada no whatsapp.net ou whatsapp.com, envie uma imagem para um amigo e pela interface web copie a url da imagem e cole aqui">
-              <span class="input-group-btn">
-                <button id="botao_remove_bg" class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
-              </span>
-            </div><!-- /input-group -->
-          </div><!-- /.col-lg-7 -->
-        </div><!-- /.row -->
-      </div>
-    </div>
-  </body>
+    </body>
 </html>
