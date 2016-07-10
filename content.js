@@ -247,3 +247,72 @@ storage.get(function(items){
             executeOption(elem, items[elem.storage], false);
     }
 });
+
+//add button rotate image
+(function () {
+    //call function when expand an image
+    document.addEventListener("click", function(e){
+        var classes = e.target.className.split(" ");
+        for(var i in classes){
+            if(classes[i] == "image-thumb-body"){
+                setTimeout(function() {
+                    insertButtonsRotate();
+                }, 100);
+            }
+        }
+    });
+
+    function rotateImage(selector, side){
+        var elem = document.querySelector(selector);
+        var regExp = /rotate\((-?\w*)deg\)/i; //rotate(...)deg
+        var regResult = elem.style.transform.match(regExp);
+
+        var angle = side == 'right' ? 90 : (-90);
+        if(regResult != null)
+            angle += parseInt(regResult[1]);
+
+        var width = elem.parentElement.getBoundingClientRect().width;
+        if(angle/90 % 2 == 1){
+            width = elem.parentElement.getBoundingClientRect().height;
+            elem.style.display = 'block';
+            elem.style.margin = '0 auto';
+            elem.style.width = width+'px';
+        }
+        elem.style.width = width+'px';
+
+        elem.style.transform = 'rotate(' + angle + 'deg)';
+        
+    }
+
+    function insertButtonsRotate(){
+        var element = document.querySelector(".media-content .object-fit > div");
+
+        var div = document.createElement('div');
+        div.style =
+            'border: 1px solid black; \
+            border-radius: 5%; \
+        ';
+
+        var btnRotateRight = document.createElement('button');
+        btnRotateRight.className = 'btn btn-round';
+        btnRotateRight.innerHTML = '<span class="icon icon-refresh"></span>';
+
+        btnRotateRight.addEventListener('click', function(){ rotateImage('.media-viewer-img', 'right') });
+
+        var btnRotateLeft = document.createElement('button');
+        btnRotateLeft.className = 'btn btn-round';
+        btnRotateLeft.innerHTML = '<span class="icon icon-refresh"></span>';
+
+        btnRotateLeft.addEventListener('click', function(){ rotateImage('.media-viewer-img', 'left') });
+
+        div.appendChild(btnRotateRight);
+        div.appendChild(btnRotateLeft);
+
+        div.addEventListener("click", function(e){
+            e.stopPropagation();
+        });
+
+        element.appendChild(div);
+        //element.insertBefore(node, firstChild);
+    }
+}());
