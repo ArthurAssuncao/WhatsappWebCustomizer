@@ -6,19 +6,19 @@
 "use strict";
 
 var constants = {
-    BG_GLOBAL: {add: "addBgGlobal", remove: "removeBgGlobal"},
-    BG_GLOBAL_TOP: {add: "addBgGlobalTop", remove: "removeBgGlobalTop"},
-    BG_CHAT: {add: "addBgChat", remove: "removeBgChat"},
-    BG_PANEL_HEADER: {add: "addBgPanelHeader", remove: "removeBgPanelHeader"},
-    BG_PANEL_MESSAGE: {add: "addBgPanelMessage", remove: "removeBgPanelMessage"},
-    BG_MESSAGE_IN: {add: "addBgMessageIn", remove: "removeBgMessageIn"},
-    BG_MESSAGE_OUT: {add: "addBgMessageOut", remove: "removeBgMessageOut"},
-    TEXT_MESSAGE_IN: {add: "addTextMessageIn", remove: "removeTextMessageIn"},
-    TEXT_MESSAGE_OUT: {add: "addTextMessageOut", remove: "removeTextMessageOut"},
+    BG_GLOBAL: {selector: ".app-wrapper", add: "addBgGlobal", remove: "removeBgGlobal"},
+    BG_GLOBAL_TOP: {selector: ".app-wrapper::after", add: "addBgGlobalTop", remove: "removeBgGlobalTop"},
+    BG_CHAT: {selector: ".pane-chat-body", add: "addBgChat", remove: "removeBgChat"},
+    BG_PANEL_HEADER: {selector: ".pane-header", add: "addBgPanelHeader", remove: "removeBgPanelHeader"},
+    BG_PANEL_MESSAGE: {selector: ".block-compose", add: "addBgPanelMessage", remove: "removeBgPanelMessage"},
+    BG_MESSAGE_IN: {selector: ".message-in", add: "addBgMessageIn", remove: "removeBgMessageIn"},
+    BG_MESSAGE_OUT: {selector: ".message-out", add: "addBgMessageOut", remove: "removeBgMessageOut"},
+    TEXT_MESSAGE_IN: {selector: ".message-in .message-text", add: "addTextMessageIn", remove: "removeTextMessageIn"},
+    TEXT_MESSAGE_OUT: {selector: ".message-out .message-text", add: "addTextMessageOut", remove: "removeTextMessageOut"},
 
     DELETE_CONFIG: "deleteStorage"
 }
-chrome.storage.sync.set(constants, function() {
+chrome.storage.sync.set({'constants': constants}, function() {
     console.log("constants saved");
 });
 

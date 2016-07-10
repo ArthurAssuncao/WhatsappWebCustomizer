@@ -12,8 +12,9 @@ console.log("Extensao Wpp Web Customizer");
 
 // Constants
 var constants = {};
-chrome.storage.sync.get(function(obj){
-    constants = obj;
+chrome.storage.sync.get('constants', function(obj){
+    constants = obj.constants;
+    getConfig();
 });
 
 // storage
@@ -91,52 +92,55 @@ var styleRules = {
     },
 };
 
-var configurations = {
-    bgGlobal: {
-        selector: ".app-wrapper",
-        storage: "bgGlobal",
-        styles: styleRules.bgGlobal
-    },
-    bgGlobalTop: {
-        selector: ".app-wrapper::after",
-        storage: "bgGlobalTop",
-        styles: styleRules.bgGlobalTop
-    },
-    bgChat: {
-        selector: ".pane-chat-body",
-        storage: "bgChat",
-        styles: styleRules.bgChat
-    },
-    bgPanelHeader: {
-        selector: ".pane-header",
-        storage: "bgPanelHeader",
-        styles: styleRules.bgPanelHeader
-    },
-    bgPanelMessage: {
-        selector: ".block-compose",
-        storage: "bgPanelMessage",
-        styles: styleRules.bgPanelMessage
-    },
-    bgMessageIn: {
-        selector: ".message-in",
-        storage: "bgMessageIn",
-        styles: styleRules.bgMessageIn
-    },
-    bgMessageOut: {
-        selector: ".message-out",
-        storage: "bgMessageOut",
-        styles: styleRules.bgMessageOut
-    },
-    textMessageIn: {
-        selector: ".message-in .message-text",
-        storage: "textMessageIn",
-        styles: styleRules.textMessageIn
-    },
-    textMessageOut: {
-        selector: ".message-out .message-text",
-        storage: "textMessageOut",
-        styles: styleRules.textMessageOut
-    },
+var configurations;
+function getConfig(){
+    configurations = {
+        bgGlobal: {
+            selector: constants.BG_GLOBAL.selector,
+            storage: "bgGlobal",
+            styles: styleRules.bgGlobal
+        },
+        bgGlobalTop: {
+            selector: constants.BG_GLOBAL_TOP.selector,
+            storage: "bgGlobalTop",
+            styles: styleRules.bgGlobalTop
+        },
+        bgChat: {
+            selector: constants.BG_CHAT.selector,
+            storage: "bgChat",
+            styles: styleRules.bgChat
+        },
+        bgPanelHeader: {
+            selector: constants.BG_PANEL_HEADER.selector,
+            storage: "bgPanelHeader",
+            styles: styleRules.bgPanelHeader
+        },
+        bgPanelMessage: {
+            selector: constants.BG_PANEL_MESSAGE.selector,
+            storage: "bgPanelMessage",
+            styles: styleRules.bgPanelMessage
+        },
+        bgMessageIn: {
+            selector: constants.BG_MESSAGE_IN.selector,
+            storage: "bgMessageIn",
+            styles: styleRules.bgMessageIn
+        },
+        bgMessageOut: {
+            selector: constants.BG_MESSAGE_OUT.selector,
+            storage: "bgMessageOut",
+            styles: styleRules.bgMessageOut
+        },
+        textMessageIn: {
+            selector: constants.TEXT_MESSAGE_IN.selector,
+            storage: "textMessageIn",
+            styles: styleRules.textMessageIn
+        },
+        textMessageOut: {
+            selector: constants.TEXT_MESSAGE_OUT.selector,
+            storage: "textMessageOut",
+            styles: styleRules.textMessageOut
+        },
+    }
 }
 
 
