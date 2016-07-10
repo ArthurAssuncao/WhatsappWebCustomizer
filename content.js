@@ -248,7 +248,6 @@ storage.get(function(items){
     }
 });
 
-//add button rotate image
 (function () {
     //call function when expand an image
     document.addEventListener("click", function(e){
@@ -256,63 +255,71 @@ storage.get(function(items){
         for(var i in classes){
             if(classes[i] == "image-thumb-body"){
                 setTimeout(function() {
-                    insertButtonsRotate();
+                    insertContainerDiv();
                 }, 100);
             }
         }
     });
+
+    function insertContainerDiv(){
+        var sizeHDiv = 10;
+
+        //decrease height size in element adjacent
+        document.querySelector(".media-viewer-img").style.height = (100 - sizeHDiv) + '%';
+
+        var div = document.createElement('div');
+        div.style.border = '1px solid black'; ////
+        div.style.height = sizeHDiv + '%';
+
+        div.addEventListener("click", function(e){
+            e.stopPropagation();
+        });
+
+        div.appendChild(buttonsRotate().left);
+        div.appendChild(buttonsRotate().right);
+
+        document.querySelector(".media-content .object-fit > div").appendChild(div); ////
+    }
+
+    function buttonsRotate(){
+        var btnRotateRight = document.createElement('button');
+        btnRotateRight.className = 'btn btn-round';
+        btnRotateRight.innerHTML = '<span class="icon icon-refresh"></span>';
+
+        var btnRotateLeft = document.createElement('button');
+        btnRotateLeft.className = 'btn btn-round';
+        btnRotateLeft.innerHTML = '<span class="icon icon-refresh"></span>';
+
+        btnRotateRight.addEventListener('click', function(){ rotateImage('.media-viewer-img', 'right') });
+        btnRotateLeft.addEventListener('click', function(){ rotateImage('.media-viewer-img', 'left') });
+        
+        return {left: btnRotateLeft, right: btnRotateRight};
+    }
 
     function rotateImage(selector, side){
         var elem = document.querySelector(selector);
         var regExp = /rotate\((-?\w*)deg\)/i; //rotate(...)deg
         var regResult = elem.style.transform.match(regExp);
 
+        //calc angle
         var angle = side == 'right' ? 90 : (-90);
         if(regResult != null)
             angle += parseInt(regResult[1]);
 
-        var width = elem.parentElement.getBoundingClientRect().width;
-        if(angle/90 % 2 == 1){
-            width = elem.parentElement.getBoundingClientRect().height;
+        var sizeParent = elem.parentElement.getBoundingClientRect();
+        var width = sizeParent.width;
+        if(Math.abs(angle) / 90 % 2 == 1){ //if vertical
             elem.style.display = 'block';
             elem.style.margin = '0 auto';
-            elem.style.width = width+'px';
+
+            width = sizeParent.height;
+            var subWidth = parseFloat(elem.style.height.replace('%', ''));
+            width -= width * (100 - subWidth) / 100;
         }
         elem.style.width = width+'px';
 
+        document.querySelector(".media-viewer-img").style['transform-origin'] = 'initial'; ////
+
         elem.style.transform = 'rotate(' + angle + 'deg)';
-        
-    }
-
-    function insertButtonsRotate(){
-        var element = document.querySelector(".media-content .object-fit > div");
-
-        var div = document.createElement('div');
-        div.style =
-            'border: 1px solid black; \
-            border-radius: 5%; \
-        ';
-
-        var btnRotateRight = document.createElement('button');
-        btnRotateRight.className = 'btn btn-round';
-        btnRotateRight.innerHTML = '<span class="icon icon-refresh"></span>';
-
-        btnRotateRight.addEventListener('click', function(){ rotateImage('.media-viewer-img', 'right') });
-
-        var btnRotateLeft = document.createElement('button');
-        btnRotateLeft.className = 'btn btn-round';
-        btnRotateLeft.innerHTML = '<span class="icon icon-refresh"></span>';
-
-        btnRotateLeft.addEventListener('click', function(){ rotateImage('.media-viewer-img', 'left') });
-
-        div.appendChild(btnRotateRight);
-        div.appendChild(btnRotateLeft);
-
-        div.addEventListener("click", function(e){
-            e.stopPropagation();
-        });
-
-        element.appendChild(div);
-        //element.insertBefore(node, firstChild);
     }
 }());
