@@ -41,7 +41,8 @@ var btnAddTextMessageOut;
 var btnRemoveTextMessageOut;
 var urlTextMessageOut;
 
-var btnImg; ////
+var btnReadLocalImg;
+
 var btnDeleteConfig;
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -93,8 +94,8 @@ document.addEventListener('DOMContentLoaded', function () {
     btnRemoveTextMessageOut = document.getElementById("btn_del_text_messageout");
     urlTextMessageOut = document.getElementById("url_text_messageout");
 
-
-    //btnImg = document.getElementById("btn_img"); ////
+    // btn local img
+    btnReadLocalImg = document.getElementById("btn_localimg");
 
     //delete config
     btnDeleteConfig = document.getElementById("btn_delete_config");
@@ -126,7 +127,8 @@ document.addEventListener('DOMContentLoaded', function () {
     btnAddTextMessageOut.addEventListener("click", function(){ funcAdd(constants.TEXT_MESSAGE_OUT.add, {color: urlTextMessageOut.value}) });
     btnRemoveTextMessageOut.addEventListener("click", function(){ funcRemove(constants.TEXT_MESSAGE_OUT.remove) });
 
-    //btnImg.addEventListener("change", readFile); ////
+    btnReadLocalImg.addEventListener("change", readLocalImg);
+    
     btnDeleteConfig.addEventListener("click", deleteConfig);
 });
 
@@ -152,22 +154,27 @@ function funcRemove(option, obj){
     }
 }
 
-
 function deleteConfig(){
     chrome.runtime.getBackgroundPage(function(bg){
         bg.backgroundFunction(constants.DELETE_CONFIG);
     });
 }
 
-/*
-function readFile() {
+function readLocalImg() {
     if (this.files && this.files[0]) {
-        var FR= new FileReader();
-        FR.onload = function(e) {
-            document.getElementById("img").src       = e.target.result;
-            document.getElementById("b64").innerHTML = e.target.result;
+        if(!this.files[0].type.startsWith("image")){
+            //accept only image
         }
-        FR.readAsDataURL( this.files[0] );
+        else if(this.files[0].size > 1.5 * 1000000){ // > 1.5MB
+            //accept image less than 1.5MB
+        }
+        else{
+            var FR = new FileReader();
+            FR.onload = function(e) {
+                var imgBase64 = e.target.result;
+                //
+            }
+            FR.readAsDataURL( this.files[0] );
+        }
     }
 }
-*/

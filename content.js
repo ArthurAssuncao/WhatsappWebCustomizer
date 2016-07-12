@@ -22,73 +22,96 @@ var storage = chrome.storage.local;
 
 
 var styleRules = {
-    bgGlobal: function(values){
-        return '' + 
-        'background-image: url(' + values.imgUrl + ');' +
-        'background-color: ' + values.bgColor + ';' +
-        '-webkit-background-size: 100% 100%;' +
-        'background-repeat: no-repeat;'+
-        'background-size: 100% 100%;' +
-        'background-position: center;' +
-        '';
+    bgGlobal: {
+        main: function(values){
+            return '' + 
+            'background-image: url(' + values.imgUrl + ');' +
+            'background-color: ' + values.bgColor + ';' +
+            '-webkit-background-size: 100% 100%;' +
+            'background-repeat: no-repeat;'+
+            'background-size: 100% 100%;' +
+            'background-position: center;' +
+            '';
+        }
     },
 
-    bgGlobalTop: function(values){
-        return '' + 
-        'background-image: url(' + values.imgUrl + ');' + 
-        'background-color: ' + values.bgColor + ';' +
-        '-webkit-background-size: 100% 100%;' + 
-        'background-repeat: no-repeat;'+
-        'background-size: 100% 100%;' +
-        'background-position: center;' +
-        '';
+    bgGlobalTop: {
+        main: function(values){
+            return '' + 
+            'background-image: url(' + values.imgUrl + ');' + 
+            'background-color: ' + values.bgColor + ';' +
+            '-webkit-background-size: 100% 100%;' + 
+            'background-repeat: no-repeat;'+
+            'background-size: 100% 100%;' +
+            'background-position: center;' +
+            '';
+        }
     },
 
-    bgChat: function(values){
-        return '' + 
-        'background-image: url(' + (values.imgUrl || '') + ');' + 
-        'background-color: ' + values.bgColor + ';' +
-        '-webkit-background-size: 100% 100%;' + 
-        'background-repeat: no-repeat;'+
-        'background-size: 100% 100%;' +
-        'background-position: center;' +
-        '';
+    bgChat: {
+        main: function(values){
+            return '' + 
+            'background-image: url(' + (values.imgUrl || '') + ');' + 
+            'background-color: ' + values.bgColor + ';' +
+            '-webkit-background-size: 100% 100%;' + 
+            'background-repeat: no-repeat;'+
+            'background-size: 100% 100%;' +
+            'background-position: center;' +
+            '';
+        }
     },
 
-    bgPanelHeader: function(values){
-        return '' + 
-        'background-color:' + values.bgColor + ';' +
-        '';
+    bgPanelHeader: {
+        main: function(values){
+            return '' + 
+            'background-color:' + values.bgColor + ';' +
+            '';
+        }
     },
 
-    bgPanelMessage: function(values){
-        return '' + 
-        'background-color:' + values.bgColor + ';' +
-        '';
+    bgPanelMessage: {
+        main: function(values){
+            return '' + 
+            'background-color:' + values.bgColor + ';' +
+            '';
+        }
     },
 
-    bgMessageIn: function(values){
-        return '' + 
-        'background-color:' + values.bgColor + ';' +
-        '';
+    bgMessageIn: {
+        main: function(values){
+            return '' + 
+            'background-color:' + values.bgColor + ';' +
+            '';
+        },
+        contextin: function(values){
+            return '' + 
+            'background: linear-gradient(to right,rgba(255,255,255,0)0%,' + values.bgColor + ' 50%) !important;' + 
+            '';
+        }
     },
 
-    bgMessageOut: function(values){
-        return '' + 
-        'background-color:' + values.bgColor + ';' +
-        '';
+    bgMessageOut: {
+        main: function(values){
+            return '' + 
+            'background-color:' + values.bgColor + ';' +
+            '';
+        }
     },
 
-    textMessageIn: function(values){
-        return '' + 
-        'color:' + values.color + ';' +
-        '';
+    textMessageIn: {
+        main: function(values){
+            return '' + 
+            'color:' + values.color + ';' +
+            '';
+        }
     },
 
-    textMessageOut: function(values){
-        return '' + 
-        'color:' + values.color + ';' +
-        '';
+    textMessageOut: {
+        main: function(values){
+            return '' + 
+            'color:' + values.color + ';' +
+            '';
+        }
     },
 };
 
@@ -154,7 +177,9 @@ var setStyleRule = function(selector, rule) {
 };
 
 function executeOption(element, values, saveStorage){
-    setStyleRule(element.selector, element.styles(values));
+    for (var i in element.selector) {
+        setStyleRule(element.selector[i], element.styles[i](values));
+    };
 
     if(saveStorage !== false){
         var obj = {};
@@ -252,6 +277,8 @@ storage.get(function(items){
     }
 });
 
+
+//Add buttons when expand images
 (function () {
     //call function when expand an image
     document.addEventListener("click", function(e){
