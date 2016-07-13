@@ -41,6 +41,10 @@ var btnAddTextMessageOut;
 var btnRemoveTextMessageOut;
 var urlTextMessageOut;
 
+var btnAddChatTitle;
+var btnRemoveChatTitle;
+var urlChatTitle;
+
 var btnReadLocalImg;
 
 var btnDeleteConfig;
@@ -94,6 +98,11 @@ document.addEventListener('DOMContentLoaded', function () {
     btnRemoveTextMessageOut = document.getElementById("btn_del_text_messageout");
     urlTextMessageOut = document.getElementById("url_text_messageout");
 
+    // chat title
+    btnAddChatTitle = document.getElementById("btn_add_chat_title");
+    btnRemoveChatTitle = document.getElementById("btn_del_chat_title");
+    urlChatTitle = document.getElementById("url_chat_title");
+
     // btn local img
     btnReadLocalImg = document.getElementById("btn_localimg");
 
@@ -126,6 +135,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     btnAddTextMessageOut.addEventListener("click", function(){ funcAdd(constants.TEXT_MESSAGE_OUT.add, {color: urlTextMessageOut.value}) });
     btnRemoveTextMessageOut.addEventListener("click", function(){ funcRemove(constants.TEXT_MESSAGE_OUT.remove) });
+
+    btnAddChatTitle.addEventListener("click", function(){ funcAdd(constants.CHAT_TITLE.add, {color: urlChatTitle.value}) });
+    btnRemoveChatTitle.addEventListener("click", function(){ funcRemove(constants.CHAT_TITLE.remove) });
 
     btnReadLocalImg.addEventListener("change", readLocalImg);
     

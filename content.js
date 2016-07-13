@@ -24,7 +24,7 @@ var storage = chrome.storage.local;
 var styleRules = {
     bgGlobal: {
         main: function(values){
-            return '' + 
+            return '' +
             'background-image: url(' + values.imgUrl + ');' +
             'background-color: ' + values.bgColor + ';' +
             '-webkit-background-size: 100% 100%;' +
@@ -37,10 +37,10 @@ var styleRules = {
 
     bgGlobalTop: {
         main: function(values){
-            return '' + 
-            'background-image: url(' + values.imgUrl + ');' + 
+            return '' +
+            'background-image: url(' + values.imgUrl + ');' +
             'background-color: ' + values.bgColor + ';' +
-            '-webkit-background-size: 100% 100%;' + 
+            '-webkit-background-size: 100% 100%;' +
             'background-repeat: no-repeat;'+
             'background-size: 100% 100%;' +
             'background-position: center;' +
@@ -51,9 +51,9 @@ var styleRules = {
     bgChat: {
         main: function(values){
             return '' + 
-            'background-image: url(' + (values.imgUrl || '') + ');' + 
+            'background-image: url(' + (values.imgUrl || '') + ');' +
             'background-color: ' + values.bgColor + ';' +
-            '-webkit-background-size: 100% 100%;' + 
+            '-webkit-background-size: 100% 100%;' +
             'background-repeat: no-repeat;'+
             'background-size: 100% 100%;' +
             'background-position: center;' +
@@ -63,7 +63,17 @@ var styleRules = {
 
     bgPanelHeader: {
         main: function(values){
-            return '' + 
+            return '' +
+            'background-color:' + values.bgColor + ';' +
+            '';
+        },
+        search: function(values){
+            return '' +
+            'background-color:' + values.bgColor + ';' +
+            '';
+        },
+        chat: function(values){
+            return '' +
             'background-color:' + values.bgColor + ';' +
             '';
         }
@@ -71,7 +81,7 @@ var styleRules = {
 
     bgPanelMessage: {
         main: function(values){
-            return '' + 
+            return '' +
             'background-color:' + values.bgColor + ';' +
             '';
         }
@@ -79,37 +89,87 @@ var styleRules = {
 
     bgMessageIn: {
         main: function(values){
-            return '' + 
+            return '' +
             'background-color:' + values.bgColor + ';' +
             '';
         },
         contextin: function(values){
-            return '' + 
-            'background: linear-gradient(to right,rgba(255,255,255,0)0%,' + values.bgColor + ' 50%) !important;' + 
+            return '' +
+            'background: linear-gradient(to right,rgba(255,255,255,0)0%,' + values.bgColor + ' 50%) !important;' +
+            '';
+        },
+        contexticon: function(values){
+            return '' +
+            'background-color:' + hexToRgba('#FFFFFF', 0.20) + ';' +
+            'border-radius: 20%;' 
             '';
         }
     },
 
     bgMessageOut: {
         main: function(values){
-            return '' + 
+            return '' +
             'background-color:' + values.bgColor + ';' +
+            '';
+        },
+        contextout: function(values){
+            return '' +
+            'background: linear-gradient(to right,rgba(255,255,255,0)0%,' + values.bgColor + ' 50%) !important;' +
+            '';
+        },
+        contexticon: function(values){
+            return '' +
+            'background-color:' + hexToRgba('#FFFFFF', 0.20) + ';' +
+            'border-radius: 20%;' 
             '';
         }
     },
 
     textMessageIn: {
         main: function(values){
-            return '' + 
+            return '' +
             'color:' + values.color + ';' +
+            '';
+        },
+        msgdate: function(values){
+            return '' +
+            'color: '+ hexToRgba(values.color, 0.55) + ';' +
             '';
         }
     },
 
     textMessageOut: {
         main: function(values){
-            return '' + 
+            return '' +
             'color:' + values.color + ';' +
+            '';
+        },
+        msgdate: function(values){
+            return '' +
+            'color: '+ hexToRgba(values.color, 0.55) + ';' +
+            '';
+        }
+    },
+
+    chatTitle: {
+        main: function(values){
+            return '' +
+            'color:' + values.color + ';' +
+            '';
+        },
+        chattime: function(values){
+            return '' +
+            'color: '+ hexToRgba(values.color, 0.55) + ';' +
+            '';
+        },
+        chatstatus: function(values){
+            return '' +
+            'color: '+ hexToRgba(values.color, 0.7) + ' !important;' +
+            '';
+        },
+        chatbody: function(values){
+            return '' +
+            'border-top-color: '+ hexToRgba(values.color, 0.55) + ' !important;' +
             '';
         }
     },
@@ -162,6 +222,11 @@ function getConfig(){
             selector: constants.TEXT_MESSAGE_OUT.selector,
             storage: "textMessageOut",
             styles: styleRules.textMessageOut
+        },
+        chatTitle: {
+            selector: constants.CHAT_TITLE.selector,
+            storage: "chatTitle",
+            styles: styleRules.chatTitle
         },
     }
 }
@@ -256,6 +321,13 @@ chrome.runtime.onMessage.addListener(
     }
     else if(option == constants.TEXT_MESSAGE_OUT.remove){
         removeConfig(configurations.textMessageOut.storage);
+    }
+
+    else if(option == constants.CHAT_TITLE.add){
+        executeOption(configurations.chatTitle, values);
+    }
+    else if(option == constants.CHAT_TITLE.remove){
+        removeConfig(configurations.chatTitle.storage);
     }
 
     else if(option == constants.DELETE_CONFIG){
@@ -354,3 +426,13 @@ storage.get(function(items){
         elem.style.transform = 'rotate(' + angle + 'deg)';
     }
 }());
+
+
+function hexToRgba(hex, opacity) {
+    hex = hex.replace('#', '');
+    var bigint = parseInt(hex, 16);
+    var r = (bigint >> 16) & 255;
+    var g = (bigint >> 8) & 255;
+    var b = bigint & 255;
+    return 'rgba(' + r +','+ g +','+ b +','+ opacity + ')';
+}
