@@ -6,7 +6,7 @@
 //http://stackoverflow.com/questions/24199119/load-an-external-image-in-img-tag-in-a-chrome-app
 //https://github.com/StylishThemes/GitHub-Dark/issues/188
 
-"use strict";
+'use strict';
 
 console.log("Extensao Wpp Web Customizer");
 
@@ -20,44 +20,52 @@ chrome.storage.sync.get('constants', function(obj){
 // storage
 var storage = chrome.storage.local;
 
-
 var styleRules = {
     bgGlobal: {
         main: function(values){
-            return '' +
-            'background-image: url(' + values.imgUrl + ');' +
-            'background-color: ' + values.bgColor + ';' +
-            '-webkit-background-size: 100% 100%;' +
-            'background-repeat: no-repeat;'+
-            'background-size: 100% 100%;' +
-            'background-position: center;' +
-            '';
+            if(values.imgUrl)
+                return '' +
+                'background-image: url(' + values.imgUrl + ');' +
+                '-webkit-background-size: 100% 100%;' +
+                'background-repeat: no-repeat;'+
+                'background-size: 100% 100%;' +
+                'background-position: center;' +
+                '';
+            else if(values.bgColor)
+                return 'background-color: ' + values.bgColor + ';' + 
+                'background-image: none;';
         }
     },
 
     bgGlobalTop: {
         main: function(values){
-            return '' +
-            'background-image: url(' + values.imgUrl + ');' +
-            'background-color: ' + values.bgColor + ';' +
-            '-webkit-background-size: 100% 100%;' +
-            'background-repeat: no-repeat;'+
-            'background-size: 100% 100%;' +
-            'background-position: center;' +
-            '';
+            if(values.imgUrl)
+                return '' +
+                'background-image: url(' + values.imgUrl + ');' +
+                '-webkit-background-size: 100% 100%;' +
+                'background-repeat: no-repeat;'+
+                'background-size: 100% 100%;' +
+                'background-position: center;' +
+                '';
+            else if(values.bgColor)
+                return 'background-color: ' + values.bgColor + ';' + 
+                'background-image: none;';
         }
     },
 
     bgChat: {
         main: function(values){
-            return '' + 
-            'background-image: url(' + (values.imgUrl || '') + ');' +
-            'background-color: ' + values.bgColor + ';' +
-            '-webkit-background-size: 100% 100%;' +
-            'background-repeat: no-repeat;'+
-            'background-size: 100% 100%;' +
-            'background-position: center;' +
-            '';
+            if(values.imgUrl)
+                return '' +
+                'background-image: url(' + values.imgUrl + ');' +
+                '-webkit-background-size: 100% 100%;' +
+                'background-repeat: no-repeat;'+
+                'background-size: 100% 100%;' +
+                'background-position: center;' +
+                '';
+            else if(values.bgColor)
+                return 'background-color: ' + values.bgColor + ';' + 
+                'background-image: none;';
         }
     },
 
@@ -341,7 +349,7 @@ chrome.runtime.onMessage.addListener(
 // Load configurations
 storage.get(function(items){
     console.log("Loading configurations");
-    console.log("STORAGE: ", items);
+    console.log("STORAGE: ", items); ////
     for(var key in configurations){
         var elem = configurations[key];
         if(items[elem.storage]) //no empty

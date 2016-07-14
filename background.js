@@ -3,7 +3,7 @@
 // found in the LICENSE file.
 //http://stackoverflow.com/questions/265984/how-to-redefine-css-classes-with-javascript
 
-"use strict";
+'use strict';
 
 var constants = {
     BG_GLOBAL: {selector: {main: ".app-wrapper"}, add: "addBgGlobal", remove: "removeBgGlobal"},
