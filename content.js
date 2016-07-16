@@ -15,6 +15,7 @@ var constants = {};
 chrome.storage.sync.get('constants', function(obj){
     constants = obj.constants;
     getConfig();
+    buttonsImage();
 });
 
 // storage
@@ -359,12 +360,12 @@ storage.get(function(items){
 
 
 //Add buttons when expand images
-(function () {
+function buttonsImage(){
     //call function when expand an image
     document.addEventListener("click", function(e){
         var classes = e.target.className.split(" ");
         for(var i in classes){
-            if(classes[i] == "image-thumb-body"){
+            if(classes[i] == constants.BUTTONS_IMG.others.thumbimage){
                 setTimeout(function() {
                     insertContainerDiv();
                 }, 100);
@@ -374,13 +375,24 @@ storage.get(function(items){
 
     function insertContainerDiv(){
         var sizeHDiv = 10;
+        var elementImg = document.querySelector(constants.BUTTONS_IMG.selector.image);
 
-        //decrease height size in element adjacent
-        document.querySelector(".media-viewer-img").style.height = (100 - sizeHDiv) + '%';
+        //decrease height size image
+        elementImg.style['height'] = (100 - sizeHDiv) + '%';
 
         var div = document.createElement('div');
-        div.style.border = '1px solid black'; ////
+        //div.style.border = '1px solid black'; ////
         div.style.height = sizeHDiv + '%';
+        div.style['max-height'] = '46px';
+        div.style['min-height'] = '46px';
+        div.style['max-width'] = '150px';
+        div.style['min-width'] = '150px';
+        div.style.margin = '0 auto';
+        div.style['margin-top'] = '10px';
+        div.style.display = 'flex';
+        div.style['justify-content'] = 'center';
+        div.style['align-items'] = 'center';
+        div.style['z-index'] = '3';
 
         div.addEventListener("click", function(e){
             e.stopPropagation();
@@ -389,20 +401,26 @@ storage.get(function(items){
         div.appendChild(buttonsRotate().left);
         div.appendChild(buttonsRotate().right);
 
-        document.querySelector(".media-content .object-fit > div").appendChild(div); ////
+        elementImg.parentElement.insertBefore(div, elementImg.nextSibling);
     }
 
     function buttonsRotate(){
         var btnRotateRight = document.createElement('button');
         btnRotateRight.className = 'btn btn-round';
         btnRotateRight.innerHTML = '<span class="icon icon-refresh"></span>';
+        btnRotateRight.style.margin = '0 5px';
+        btnRotateRight.style['z-index'] = '3';
 
         var btnRotateLeft = document.createElement('button');
         btnRotateLeft.className = 'btn btn-round';
         btnRotateLeft.innerHTML = '<span class="icon icon-refresh"></span>';
+        btnRotateLeft.style.margin = '0 5px';
+        btnRotateLeft.style['z-index'] = '3';
+        btnRotateLeft.style.transform = 'rotateY(180deg)';
 
-        btnRotateRight.addEventListener('click', function(){ rotateImage('.media-viewer-img', 'right') });
-        btnRotateLeft.addEventListener('click', function(){ rotateImage('.media-viewer-img', 'left') });
+
+        btnRotateRight.addEventListener('click', function(){ rotateImage(constants.BUTTONS_IMG.selector.image, 'right') });
+        btnRotateLeft.addEventListener('click', function(){ rotateImage(constants.BUTTONS_IMG.selector.image, 'left') });
         
         return {left: btnRotateLeft, right: btnRotateRight};
     }
@@ -427,13 +445,13 @@ storage.get(function(items){
             var subWidth = parseFloat(elem.style.height.replace('%', ''));
             width -= width * (100 - subWidth) / 100;
         }
-        elem.style.width = width+'px';
+        elem.style['max-width'] = width+'px';
 
-        document.querySelector(".media-viewer-img").style['transform-origin'] = 'initial'; ////
+        document.querySelector(constants.BUTTONS_IMG.selector.image).style['transform-origin'] = 'initial';
 
         elem.style.transform = 'rotate(' + angle + 'deg)';
     }
-}());
+};
 
 
 function hexToRgba(hex, opacity) {
