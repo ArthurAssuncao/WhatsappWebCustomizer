@@ -1,26 +1,215 @@
 {
     "name": {
-        "message": "Wpp Web customizer",
+        "message": "Wpp Web Customizer",
         "description": "Extension name"
     },
     "description": {
-        "message": "Customize your Wpp Web",
+        "message": "Customizes your Wpp Web",
         "description": "Extension description"
     },
-    "btn_change_bg": {
-        "message": "Change background",
-        "description": "Change background button"
+    "message_warning": {
+        "message" : "Reload the page to complete the operation.",
+        "description": "Warning message."
     },
-    "textfield_holder": {
+    "question_remove_item": {
+        "message": "Are you sure you want to remove this item?",
+        "description": "Remove item question."
+    },
+    "question_restore_default": {
+        "message": "Are you sure you want to restore to default?",
+        "description": "Restore default question."
+    },
+    "alert_type_file_error": {
+        "message": "Select only images.",
+        "description": "Alert to file with wrong extension."
+    },
+    "alert_size_file_error": {
+        "message": "Select only images with size up to 1.5 MB.",
+        "description": "Alert to file with wrong size."
+    },
+
+    // input types
+    "input_type_url": {
+        "message": "Url",
+        "description": "Input type."
+    },
+    "input_type_file": {
+        "message": "Local",
+        "description": "Input type."
+    },
+    "input_type_color": {
+        "message": "Cor",
+        "description": "Input type."
+    },
+    "placeholder_input_url": {
         "message": "Image URL",
-        "description": "Text field placeholder message"
+        "description": "Input placeholder."
     },
-    "textfield_msg_erro": {
-        "message": "Image must has hosted in whatsapp.net or whatsapp.com, send a image to friend and from web interface copy link address and paste in text field.",
-        "description": "Text field title message erro"
+    "placeholder_input_file": {
+        "message": "Select file",
+        "description": "Input placeholder."
     },
-    "remover_bg_pergunta": {
-        "message": "Remove background?",
-        "description": "Remove background answer"
+    "placeholder_input_color": {
+        "message": "Background Color",
+        "description": "Input placeholder."
+    },
+
+
+    // background global
+    "global_btn_add_bg": {
+        "message": "Background Screen",
+        "description": "Button to change the background."
+    },
+    "global_title_btn_add_bg": {
+        "message": "Add Background",
+        "description": "Title to change the background."
+    },
+    "global_title_btn_remove_bg": {
+        "message": "Remove Background",
+        "description": "Title to remove the background."
+    },
+    
+    // background chat
+    "chat_btn_add_bg": {
+        "message": "Background Chat",
+        "description": "Button to change the background chat."
+    },
+    "chat_title_btn_add_bg": {
+        "message": "Add Background Chat",
+        "description": "Title to change the background."
+    },
+    "chat_title_btn_remove_bg": {
+        "message": "Remove Background Chat",
+        "description": "Title to remove the background chat."
+    },
+
+    // panel header
+    "panel_fieldset_legend": {
+        "message": "Panel",
+        "description": "Panel fieldset legend."
+    },
+    "panel_name_input_bg": {
+        "message": "Background",
+        "description": "Name input panel."
+    },
+    "panel_placeholder_input_bg": {
+        "message": "Background Color",
+        "description": "Placeholder to the panel input."
+    },
+    "panel_title_input_bg": {
+        "message": "Background Color",
+        "description": "Title of the input panel."
+    },
+    "panel_title_btn_remove_bg": {
+        "message": "Remove Background",
+        "description": "Title remove background panel."
+    },
+
+    // panel chat title
+    "chattitle_name_input_textcolor": {
+        "message": "Text",
+        "description": "Input name text panel."
+    },
+    "chattitle_placeholder_input_textcolor": {
+        "message": "Background Color",
+        "description": "Input placeholder text panel."
+    },
+    "chattitle_title_input_textcolor": {
+        "message": "Background Color",
+        "description": "Title of the input text panel."
+    },
+    "chattitle_title_btn_remove_textcolor": {
+        "message": "Remove Background",
+        "description": "Title remove color text panel."
+    },
+
+    // message out
+    "messageout_fieldset_legend": {
+        "message": "Messages Sent",
+        "description": "Messages out fieldset legend."
+    },
+    "messageout_name_input_bg": {
+        "message": "Background",
+        "description": "Name input messages out."
+    },
+    "messageout_placeholder_input_bg": {
+        "message": "Background Color",
+        "description": "Placeholder input messages out."
+    },
+    "messageout_title_input_bg": {
+        "message": "Background Color",
+        "description": "Title input message out."
+    },
+    "messageout_title_btn_remove_bg": {
+        "message": "Remove Background",
+        "description": "Title button remove background message out."
+    },
+
+    // text message out
+    "textmessageout_name_input_textcolor": {
+        "message": "Text",
+        "description": "Name input text message out."
+    },
+    "textmessageout_placeholder_input_textcolor": {
+        "message": "Background Color",
+        "description": "Placeholder input text message out."
+    },
+    "textmessageout_title_input_textcolor": {
+        "message": "Background Color",
+        "description": "Title input text message out."
+    },
+    "textmessageout_title_btn_remove_textcolor": {
+        "message": "Remove Background",
+        "description": "Title button remove color text message out."
+    },
+
+    // message in
+    "messagein_fieldset_legend": {
+        "message": "Messages Received",
+        "description": "Messages in fieldset legend."
+    },
+    "messagein_name_input_bg": {
+        "message": "Background",
+        "description": "Name input messages in."
+    },
+    "messagein_placeholder_input_bg": {
+        "message": "Background Color",
+        "description": "Placeholder input messages in."
+    },
+    "messagein_title_input_bg": {
+        "message": "Background Color",
+        "description": "Title input message in."
+    },
+    "messagein_title_btn_remove_bg": {
+        "message": "Remove Background",
+        "description": "Title button remove background message in."
+    },
+
+    // text message in
+    "textmessagein_name_input_textcolor": {
+        "message": "Text",
+        "description": "Name input text message in."
+    },
+    "textmessagein_placeholder_input_textcolor": {
+        "message": "Background Color",
+        "description": "Placeholder input text message in."
+    },
+    "textmessagein_title_input_textcolor": {
+        "message": "Background Color",
+        "description": "Title input text message out."
+    },
+    "textmessagein_title_btn_remove_textcolor": {
+        "message": "Remove Background",
+        "description": "Title button remove color text message in."
+    },
+
+    // restore default
+    "restoredefault_btn": {
+        "message": "Restore Default",
+        "description": "Button to restore default."
+    },
+    "restoredefault_title": {
+        "message": "Restore to default",
+        "description": "Title button restore default."
     }
 }
