@@ -7,6 +7,8 @@ chrome.runtime.getBackgroundPage(function(window){
 
 
 document.addEventListener('DOMContentLoaded', function () {
+    $('#message_warning').text(chrome.i18n.getMessage('message_warning'));
+
     //input types
     $('.type_url > a').text(chrome.i18n.getMessage('input_type_url'));
     $('.type_file > a').text(chrome.i18n.getMessage('input_type_file'));
@@ -18,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var btnTypeBg = $('#btn_type_bg');
     var valueBg = $('#value_bg');
     var btnRemoveBg = $('#btn_del_bg');
-    btnAddBg.text(chrome.i18n.getMessage('global_btn_add_bg'));
+    btnAddBg.html(chrome.i18n.getMessage('global_btn_add_bg') + ' <span class="glyphicon glyphicon-upload" aria-hidden="true"></span>');
     btnAddBg.prop('title', chrome.i18n.getMessage('global_title_btn_add_bg'));
     btnTypeBg.html(chrome.i18n.getMessage('input_type_url') + ' <span class="caret"></span>');
     valueBg.prop('placeholder', chrome.i18n.getMessage('placeholder_input_url'));
@@ -33,8 +35,8 @@ document.addEventListener('DOMContentLoaded', function () {
     var btnTypeBgChat = $('#btn_type_bg_chat');
     var valueBgChat = $('#value_bg_chat');
     var btnRemoveBgChat = $('#btn_del_bg_chat');
-    btnAddBgChat.text(chrome.i18n.getMessage('chat_btn_add_bg'));
-    btnAddBg.prop('title', chrome.i18n.getMessage('chat_title_btn_add_bg'));
+    btnAddBgChat.html(chrome.i18n.getMessage('chat_btn_add_bg') + ' <span class="glyphicon glyphicon-upload" aria-hidden="true"></span>');
+    btnAddBgChat.prop('title', chrome.i18n.getMessage('chat_title_btn_add_bg'));
     btnTypeBgChat.html(chrome.i18n.getMessage('input_type_url') + ' <span class="caret"></span>');
     valueBgChat.prop('placeholder', chrome.i18n.getMessage('placeholder_input_url'));
     btnRemoveBgChat.prop('title', chrome.i18n.getMessage('chat_title_btn_remove_bg'));
@@ -160,7 +162,7 @@ document.addEventListener('DOMContentLoaded', function () {
         valueBgChat.val('');
 
         if($(this).hasClass('type_color')){
-            valueBg.prop('placeholder', chrome.i18n.getMessage('placeholder_input_color'));
+            valueBgChat.prop('placeholder', chrome.i18n.getMessage('placeholder_input_color'));
             valueBgChat.prop('type', 'text');
             btnAddBgChat.prop('disabled', true);
             valueBgChat.colorpicker().on('changeColor', function(e) {
@@ -173,14 +175,14 @@ document.addEventListener('DOMContentLoaded', function () {
             btnAddBgChat.off('click.type_file').off('click.type_url');
 
             if($(this).hasClass('type_url')){
-                valueBg.prop('placeholder', chrome.i18n.getMessage('placeholder_input_url'));
+                valueBgChat.prop('placeholder', chrome.i18n.getMessage('placeholder_input_url'));
                 valueBgChat.prop('type', 'url');
                 btnAddBgChat.on('click.type_url', function(){
                     funcAdd(constants.BG_CHAT.add, {imgUrl: valueBgChat.val()});
                 });
             }
             else if($(this).hasClass('type_file')){
-                valueBg.prop('placeholder', chrome.i18n.getMessage('placeholder_input_file'));
+                valueBgChat.prop('placeholder', chrome.i18n.getMessage('placeholder_input_file'));
                 valueBgChat.prop('type', 'file');
                 btnAddBgChat.on('click.type_file', function(){
                     readLocalImg(valueBgChat[0], function(imgB64){
