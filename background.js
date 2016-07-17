@@ -9,18 +9,19 @@ var constants = {
     BG_GLOBAL: {selector: {main: ".app-wrapper"}, add: "addBgGlobal", remove: "removeBgGlobal"},
     BG_GLOBAL_TOP: {selector: {main: ".app-wrapper::after"}, add: "addBgGlobalTop", remove: "removeBgGlobalTop"},
     BG_CHAT: {selector: {main: ".pane-chat-body"}, add: "addBgChat", remove: "removeBgChat"},
-    BG_PANEL_HEADER: {selector: {main: ".pane-header", search: '.search-container', chat: '.pane-one .pane-body .chatlist .chat'}, add: "addBgPanelHeader", remove: "removeBgPanelHeader"},
+    BG_PANEL_HEADER: {selector: {main: ".pane-header", search: '.search-container', chat: '.chat-drag-cover .chat'}, add: "addBgPanelHeader", remove: "removeBgPanelHeader"},
     BG_PANEL_MESSAGE: {selector: {main: ".block-compose"}, add: "addBgPanelMessage", remove: "removeBgPanelMessage"},
     BG_MESSAGE_IN: {selector: {main: ".message-in", contextin: '.context-in', contexticon: '.context-in .context-icon'}, add: "addBgMessageIn", remove: "removeBgMessageIn"},
     BG_MESSAGE_OUT: {selector: {main: ".message-out", contextout: '.context-out', contexticon: '.context-out .context-icon'}, add: "addBgMessageOut", remove: "removeBgMessageOut"},
     TEXT_MESSAGE_IN: {selector: {main: ".message-in .message-text", msgdate: '.message-in .message-datetime'}, add: "addTextMessageIn", remove: "removeTextMessageIn"},
     TEXT_MESSAGE_OUT: {selector: {main: ".message-out .message-text", msgdate: '.message-out .message-datetime'}, add: "addTextMessageOut", remove: "removeTextMessageOut"},
-    CHAT_TITLE: {selector: {main: ".pane-one .pane-body .chatlist .chat-title", chattime: '.pane-one .pane-body .chatlist .chat-time', chatstatus: '.pane-one .pane-body .chatlist .chat-status', chatbody: '.pane-one .pane-body .chat-body'}, add: "addChatTitle", remove: "removeChatTitle"},
+    CHAT_TITLE: {selector: {main: ".pane-one .chat-body .chat-title, .pane-two .chat-body .chat-title", chattime: '.pane-one .chat-body .chat-time', chatstatus: '.pane-one .chat-body .chat-status, .pane-two .chat-body .chat-status', chatbody: '.pane-one .pane-body .chat-body'}, add: "addChatTitle", remove: "removeChatTitle"},
 
     BUTTONS_IMG: {selector: {image: '.media-viewer-img'}, others: {thumbimage: 'image-thumb-body'}},
 
     DELETE_CONFIG: "deleteStorage"
 }
+
 chrome.storage.sync.clear(); ////
 chrome.storage.sync.get('constants', function(obj){
     if(!Object.keys(obj).length)

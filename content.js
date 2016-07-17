@@ -8,7 +8,7 @@
 
 'use strict';
 
-console.log("Extensao Wpp Web Customizer");
+console.log('Extensao Wpp Web Customizer');
 
 // Constants
 var constants = {};
@@ -189,52 +189,52 @@ function getConfig(){
     configurations = {
         bgGlobal: {
             selector: constants.BG_GLOBAL.selector,
-            storage: "bgGlobal",
+            storage: 'bgGlobal',
             styles: styleRules.bgGlobal
         },
         bgGlobalTop: {
             selector: constants.BG_GLOBAL_TOP.selector,
-            storage: "bgGlobalTop",
+            storage: 'bgGlobalTop',
             styles: styleRules.bgGlobalTop
         },
         bgChat: {
             selector: constants.BG_CHAT.selector,
-            storage: "bgChat",
+            storage: 'bgChat',
             styles: styleRules.bgChat
         },
         bgPanelHeader: {
             selector: constants.BG_PANEL_HEADER.selector,
-            storage: "bgPanelHeader",
+            storage: 'bgPanelHeader',
             styles: styleRules.bgPanelHeader
         },
         bgPanelMessage: {
             selector: constants.BG_PANEL_MESSAGE.selector,
-            storage: "bgPanelMessage",
+            storage: 'bgPanelMessage',
             styles: styleRules.bgPanelMessage
         },
         bgMessageIn: {
             selector: constants.BG_MESSAGE_IN.selector,
-            storage: "bgMessageIn",
+            storage: 'bgMessageIn',
             styles: styleRules.bgMessageIn
         },
         bgMessageOut: {
             selector: constants.BG_MESSAGE_OUT.selector,
-            storage: "bgMessageOut",
+            storage: 'bgMessageOut',
             styles: styleRules.bgMessageOut
         },
         textMessageIn: {
             selector: constants.TEXT_MESSAGE_IN.selector,
-            storage: "textMessageIn",
+            storage: 'textMessageIn',
             styles: styleRules.textMessageIn
         },
         textMessageOut: {
             selector: constants.TEXT_MESSAGE_OUT.selector,
-            storage: "textMessageOut",
+            storage: 'textMessageOut',
             styles: styleRules.textMessageOut
         },
         chatTitle: {
             selector: constants.CHAT_TITLE.selector,
-            storage: "chatTitle",
+            storage: 'chatTitle',
             styles: styleRules.chatTitle
         },
     }
@@ -264,7 +264,7 @@ function executeOption(element, values, saveStorage){
 
 function removeConfig(storageObj){
     storage.remove(storageObj, function(r){
-        console.log("Removido: ", storageObj);
+        //console.log('Removed: ', storageObj);
     });
 }
 
@@ -341,16 +341,16 @@ chrome.runtime.onMessage.addListener(
 
     else if(option == constants.DELETE_CONFIG){
         storage.clear();
-        console.log("CLEAR STORAGE");
+        //console.log('CLEAR STORAGE');
     }
 
-    sendResponse({result: "ok"});
+    sendResponse({result: 'ok'});
   });
 
 // Load configurations
 storage.get(function(items){
-    console.log("Loading configurations");
-    console.log("STORAGE: ", items); ////
+    console.log('Loading configurations');
+    //console.log('STORAGE: ', items);
     for(var key in configurations){
         var elem = configurations[key];
         if(items[elem.storage]) //no empty
@@ -362,13 +362,13 @@ storage.get(function(items){
 //Add buttons when expand images
 function buttonsImage(){
     //call function when expand an image
-    document.addEventListener("click", function(e){
-        var classes = e.target.className.split(" ");
+    document.addEventListener('click', function(e){
+        var classes = e.target.className.split(' ');
         for(var i in classes){
             if(classes[i] == constants.BUTTONS_IMG.others.thumbimage){
                 setTimeout(function() {
                     insertContainerDiv();
-                }, 100);
+                }, 450);
             }
         }
     });
@@ -377,31 +377,57 @@ function buttonsImage(){
         var sizeHDiv = 10;
         var elementImg = document.querySelector(constants.BUTTONS_IMG.selector.image);
 
-        //decrease height size image
-        elementImg.style['height'] = (100 - sizeHDiv) + '%';
+        
+        var parent = elementImg.parentNode;
+        parent.style.display = 'flex';
+        parent.style['flex-direction'] = 'row';
+        parent.style['justify-content'] = 'center';
+        parent.style['flex-wrap'] =  'wrap';
+        parent.style.width = '100%';
+        parent.style.height = '100%';
+
+        var newParent = document.createElement('div');
+        newParent.style.height = (100 - sizeHDiv) + '%';
+        newParent.style['padding-bottom'] = '10px';
+        newParent.style.display = 'flex';
+        newParent.style['flex-direction'] = 'row';
+        newParent.style['justify-content'] = 'center';
+        newParent.style['flex-wrap'] =  'wrap';
+        newParent.style.flex = '1 100%';
+
+        elementImg.style['max-width'] = '100%';
+        elementImg.style['max-height'] = '100%';
+        elementImg.style.width = 'initial';
+        elementImg.style.height = 'initial';
+        elementImg.style['align-self'] = 'center';
+
+        // add new parent
+        parent.replaceChild(newParent, elementImg);
+        newParent.appendChild(elementImg);
+        
 
         var div = document.createElement('div');
-        //div.style.border = '1px solid black'; ////
         div.style.height = sizeHDiv + '%';
         div.style['max-height'] = '46px';
         div.style['min-height'] = '46px';
         div.style['max-width'] = '150px';
         div.style['min-width'] = '150px';
-        div.style.margin = '0 auto';
-        div.style['margin-top'] = '10px';
+        div.style['z-index'] = '3';
         div.style.display = 'flex';
         div.style['justify-content'] = 'center';
         div.style['align-items'] = 'center';
-        div.style['z-index'] = '3';
+        div.style['align-self'] = 'flex-end';
+        div.style['flex'] = '1 100%';
+        
 
-        div.addEventListener("click", function(e){
+        div.addEventListener('click', function(e){
             e.stopPropagation();
         });
 
         div.appendChild(buttonsRotate().left);
         div.appendChild(buttonsRotate().right);
 
-        elementImg.parentElement.insertBefore(div, elementImg.nextSibling);
+        parent.insertBefore(div, newParent.nextSibling);
     }
 
     function buttonsRotate(){
@@ -435,15 +461,11 @@ function buttonsImage(){
         if(regResult != null)
             angle += parseInt(regResult[1]);
 
-        var sizeParent = elem.parentElement.getBoundingClientRect();
+        var sizeParent = elem.parentNode.getBoundingClientRect();
+
         var width = sizeParent.width;
         if(Math.abs(angle) / 90 % 2 == 1){ //if vertical
-            elem.style.display = 'block';
-            elem.style.margin = '0 auto';
-
             width = sizeParent.height;
-            var subWidth = parseFloat(elem.style.height.replace('%', ''));
-            width -= width * (100 - subWidth) / 100;
         }
         elem.style['max-width'] = width+'px';
 
@@ -451,7 +473,7 @@ function buttonsImage(){
 
         elem.style.transform = 'rotate(' + angle + 'deg)';
     }
-};
+}
 
 
 function hexToRgba(hex, opacity) {
