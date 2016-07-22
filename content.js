@@ -102,6 +102,11 @@ var styleRules = {
             'background-color:' + values.bgColor + ';' +
             '';
         },
+        tail: function(){
+            return '' +
+            'background-image:none;' +
+            '';
+        },
         contextin: function(values){
             return '' +
             'background: linear-gradient(to right,rgba(255,255,255,0)0%,' + values.bgColor + ' 50%) !important;' +
@@ -119,6 +124,11 @@ var styleRules = {
         main: function(values){
             return '' +
             'background-color:' + values.bgColor + ';' +
+            '';
+        },
+        tail: function(){
+            return '' +
+            'background-image:none;' +
             '';
         },
         contextout: function(values){
