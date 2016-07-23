@@ -76,6 +76,11 @@ var styleRules = {
             'background-color:' + values.bgColor + ';' +
             '';
         },
+        bgchatlist: function(values){
+            return '' +
+            'background-color:' + values.bgColor + ';' +
+            '';
+        },
         search: function(values){
             return '' +
             'background-color:' + values.bgColor + ';' +
@@ -262,8 +267,13 @@ var setStyleRule = function(selector, rule) {
 
 function executeOption(element, values, saveStorage){
     for (var i in element.selector) {
-        setStyleRule(element.selector[i], element.styles[i](values));
-    };
+        try{
+            setStyleRule(element.selector[i], element.styles[i](values));
+        }
+        catch(error){
+            console.log(error);
+        }
+    }
 
     if(saveStorage !== false){
         var obj = {};
