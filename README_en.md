@@ -1,20 +1,46 @@
 # Wpp web Customizer ![Wpp web Customizer logo](https://raw.githubusercontent.com/ArthurAssuncao/WhatsappWebCustomizer/master/icon48.png?raw=true "Wpp web Customizer logo")
 Customize the Whatsapp™ Web.
 
-## URL para instalar no Google Chrome
-[<img src="http://www.google.com/intl/pt-BR/chrome/assets/consumer/images/delorean/122010_webstore.jpg" height=30px />  WPP Web Customizer na Google Chrome Store](https://chrome.google.com/webstore/detail/wpp-web-customizer/lhaamjcmnafobcjjcjfpglfonpdkoedb)
+Select linguage:[ [en-us](https://github.com/ArthurAssuncao/WhatsappWebCustomizer/blob/master/README_en.md) | [pt-br](https://github.com/ArthurAssuncao/WhatsappWebCustomizer/blob/master/README.md)]
+
+## Link to Chrome Web Store
+[<img src="http://www.google.com/intl/pt-BR/chrome/assets/consumer/images/delorean/122010_webstore.jpg" height=30px />  WPP Web Customizer in Google Chrome Store](https://chrome.google.com/webstore/detail/wpp-web-customizer/lhaamjcmnafobcjjcjfpglfonpdkoedb)
 
 ## Features:
-- Change the chat background
+- Modifies the appearance of the WhatsApp ™ Web.
+- Buttons for rotating images.
 
-## ow to use:
-Send to image to someone friend in Whatsapp Web, click in image, copy link address, click in Wpp web customizer icon, paste link and click in Change Background.
-Note: This is necessary because Whatsapp Web blocks with CSP, then only accept images from Whatsapp.com and Whatsapp.net
+## How to use:
+Go to the Web site Whatsapp and click on the extension icon and make your customization.
+The extension works only in Whatsapp Web pages may not be used from other pages.
 
 ## Screenshot
-![Screenshot](https://github.com/ArthurAssuncao/WhatsappWebCustomizer/blob/master/screenshots/wpp_web_customizer_01.png?raw=true "Screenshot")
+<p align="center">
+    <img width="800px" src="https://github.com/ArthurAssuncao/WhatsappWebCustomizer/blob/master/screenshots/wpp_web_customizer_01.png?raw=true" alt="Screenshot 01"/>
+</p>
+<p align="center">
+    <img width="800px" src="https://github.com/ArthurAssuncao/WhatsappWebCustomizer/blob/master/screenshots/wpp_web_customizer_02.png?raw=true" alt="Screenshot 02"/>
+</p>
+<p align="center">
+    <img width="800px" src="https://github.com/ArthurAssuncao/WhatsappWebCustomizer/blob/master/screenshots/wpp_web_customizer_03.png?raw=true" alt="Screenshot 03"/>
+</p>
+<p align="center">
+    <img width="800px" src="https://github.com/ArthurAssuncao/WhatsappWebCustomizer/blob/master/screenshots/wpp_web_customizer_04.png?raw=true" alt="Screenshot 04"/>
+</p>
+<p align="center">
+    <img width="800px" src="https://github.com/ArthurAssuncao/WhatsappWebCustomizer/blob/master/screenshots/wpp_web_customizer_05.png?raw=true" alt="Screenshot 05"/>
+</p>
 
 ## Change log:
+1.0.3
+- Code rewritten
+- Background change option added. (By URL, local or color).
+- Chat background change option added. (By URL, local or color).
+- Panel color change option added.
+- Messages color change option added.
+- Added rotate images button.
+- Added restore default button.
+
 0.1.8
 - Fixed background centralization
 
@@ -45,7 +71,7 @@ Note: This is necessary because Whatsapp Web blocks with CSP, then only accept i
 ### PERMISSIONS
 The message shown by Google Chrome for the requested permissions is far from the real needs of the extension, but the permissions are technically required for the following reasons:
 
-- Read and change your data on web.whatsapp.com: Required to change the chat background.
+- Read and change your data on web.whatsapp.com: Required to change the appearance of WhatsApp ™ Web.
 
 ### LICENSE
 The Wpp Web Customizer is free.
