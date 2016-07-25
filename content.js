@@ -397,7 +397,6 @@ function buttonsImage(){
         var sizeHDiv = 10;
         var elementImg = document.querySelector(constants.BUTTONS_IMG.selector.image);
 
-        
         var parent = elementImg.parentNode;
         parent.style.display = 'flex';
         parent.style['flex-direction'] = 'row';
@@ -420,12 +419,13 @@ function buttonsImage(){
         elementImg.style.width = 'initial';
         elementImg.style.height = 'initial';
         elementImg.style['align-self'] = 'center';
+        elementImg.style['backface-visibility'] = 'hidden';
 
         // add new parent
         parent.replaceChild(newParent, elementImg);
         newParent.appendChild(elementImg);
         
-
+        //Container buttons
         var div = document.createElement('div');
         div.style.height = sizeHDiv + '%';
         div.style['max-height'] = '46px';
