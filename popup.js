@@ -144,10 +144,10 @@ document.addEventListener('DOMContentLoaded', function () {
             else if($(this).hasClass('type_file')){
                 valueBg.prop('placeholder', chrome.i18n.getMessage('placeholder_input_file'));
                 valueBg.prop('type', 'file');
-                btnAddBg.on('click.type_file', function(){
-                    readLocalImg(valueBg[0], function(imgB64){
-                        funcAdd(constants.BG_GLOBAL.add, {imgUrl: imgB64});
-                    });
+
+                valueBg.one('click.prevent1', function(e){
+                    e.preventDefault();
+                    funcAdd(constants.BG_GLOBAL.add_by_file);
                 });
             }
         }
@@ -184,10 +184,10 @@ document.addEventListener('DOMContentLoaded', function () {
             else if($(this).hasClass('type_file')){
                 valueBgChat.prop('placeholder', chrome.i18n.getMessage('placeholder_input_file'));
                 valueBgChat.prop('type', 'file');
-                btnAddBgChat.on('click.type_file', function(){
-                    readLocalImg(valueBgChat[0], function(imgB64){
-                        funcAdd(constants.BG_CHAT.add, {imgUrl: imgB64});
-                    });
+
+                valueBgChat.one('click.prevent', function(e){
+                    e.preventDefault();
+                    funcAdd(constants.BG_CHAT.add_by_file);
                 });
             }
         }
@@ -232,11 +232,16 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function funcAdd(option, obj){
+    obj = obj || {};
+    var valid = true;
     for(var o in obj)
-        if(obj[o])
-            chrome.runtime.getBackgroundPage(function(bg){
-                bg.backgroundFunction(option, obj);
-            });
+        if(!obj[o]) valid = false;
+
+    if(valid){
+        chrome.runtime.getBackgroundPage(function(bg){
+            bg.backgroundFunction(option, obj);
+        });
+    }
 }
 
 function funcRemove(option, obj){

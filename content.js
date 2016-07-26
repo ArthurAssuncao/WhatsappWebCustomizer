@@ -300,6 +300,9 @@ chrome.runtime.onMessage.addListener(
     else if(option == constants.BG_GLOBAL.remove){
         removeConfig(configurations.bgGlobal.storage);
     }
+    else if(option == constants.BG_GLOBAL.add_by_file){
+        fileChooser(configurations.bgGlobal, 'imgUrl');
+    }
 
     else if(option == constants.BG_GLOBAL_TOP.add){
         executeOption(configurations.bgGlobalTop, values);
@@ -313,6 +316,9 @@ chrome.runtime.onMessage.addListener(
     }
     else if(option == constants.BG_CHAT.remove){
         removeConfig(configurations.bgChat.storage);
+    }
+    else if(option == constants.BG_CHAT.add_by_file){
+        fileChooser(configurations.bgChat, 'imgUrl');
     }
 
     else if(option == constants.BG_PANEL_HEADER.add || option == constants.BG_PANEL_MESSAGE.add){
@@ -503,4 +509,34 @@ function hexToRgba(hex, opacity) {
     var g = (bigint >> 8) & 255;
     var b = bigint & 255;
     return 'rgba(' + r +','+ g +','+ b +','+ opacity + ')';
+}
+
+function fileChooser(option, key){
+    var fileChooser = document.createElement('input');
+    fileChooser.type = 'file';
+    fileChooser.addEventListener('change', function(){
+        readLocalImg(this, function(imgB64){
+            executeOption(option, {[key]: imgB64});
+        });
+    });
+    fileChooser.click();
+}
+
+function readLocalImg(element, callback) {
+    if (element.files && element.files[0]) {
+        if(!element.files[0].type.startsWith('image')){
+            alert(chrome.i18n.getMessage('alert_type_file_error'));
+        }
+        else if(element.files[0].size > 1.5 * 1000000){ // > 1.5MB
+            alert(chrome.i18n.getMessage('alert_size_file_error'));
+        }
+        else{
+            var FR = new FileReader();
+            FR.onload = function(e) {
+                var imgBase64 = e.target.result;
+                callback(imgBase64);
+            }
+            FR.readAsDataURL( element.files[0] );
+        }
+    }
 }

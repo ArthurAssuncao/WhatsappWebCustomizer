@@ -7,8 +7,8 @@
 
 var constants = {
     BG_GLOBAL: {selector: {main: ".app-wrapper"}, add: "addBgGlobal", remove: "removeBgGlobal"},
-    BG_GLOBAL_TOP: {selector: {main: ".app-wrapper::after"}, add: "addBgGlobalTop", remove: "removeBgGlobalTop"},
-    BG_CHAT: {selector: {main: ".pane-chat-body"}, add: "addBgChat", remove: "removeBgChat"},
+    BG_GLOBAL_TOP: {selector: {main: ".app-wrapper::after"}, add: "addBgGlobalTop", add_by_file: "addBgByFile", remove: "removeBgGlobalTop"},
+    BG_CHAT: {selector: {main: ".pane-chat-body"}, add: "addBgChat", add_by_file: "addBgByFile", remove: "removeBgChat"},
     BG_PANEL_HEADER: {selector: {main: ".pane-header", bgchatlist: '.pane-one .pane-body .infinite-list-viewport', search: '.pane-one .search-container', chat: '.chat-drag-cover .chat'}, add: "addBgPanelHeader", remove: "removeBgPanelHeader"},
     BG_PANEL_MESSAGE: {selector: {main: ".block-compose"}, add: "addBgPanelMessage", remove: "removeBgPanelMessage"},
     BG_MESSAGE_IN: {selector: {main: ".message-in", tail: ".message-in:before", contextin: '.context-in', contexticon: '.context-in .context-icon'}, add: "addBgMessageIn", remove: "removeBgMessageIn"},
