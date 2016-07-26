@@ -57,7 +57,7 @@
 
     // background global
     "global_btn_add_bg": {
-        "message": "Background Screen",
+        "message": "Add",
         "description": "Button to change the background."
     },
     "global_title_btn_add_bg": {
@@ -68,10 +68,14 @@
         "message": "Remove Background",
         "description": "Title to remove the background."
     },
+    "global_placeholder_input_url": {
+        "message": "Background: Image URL",
+        "description": "Placeholder input."
+    },
     
     // background chat
     "chat_btn_add_bg": {
-        "message": "Background Chat",
+        "message": "Add",
         "description": "Button to change the background chat."
     },
     "chat_title_btn_add_bg": {
@@ -81,6 +85,10 @@
     "chat_title_btn_remove_bg": {
         "message": "Remove Background Chat",
         "description": "Title to remove the background chat."
+    },
+    "global_placeholder_input_url": {
+        "message": "Chat: Image URL",
+        "description": "Placeholder input."
     },
 
     // panel header

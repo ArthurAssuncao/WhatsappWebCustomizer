@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
     btnAddBg.html(chrome.i18n.getMessage('global_btn_add_bg') + ' <span class="glyphicon glyphicon-upload" aria-hidden="true"></span>');
     btnAddBg.prop('title', chrome.i18n.getMessage('global_title_btn_add_bg'));
     btnTypeBg.html(chrome.i18n.getMessage('input_type_url') + ' <span class="caret"></span>');
-    valueBg.prop('placeholder', chrome.i18n.getMessage('placeholder_input_url'));
+    valueBg.prop('placeholder', chrome.i18n.getMessage('global_placeholder_input_url'));
     btnRemoveBg.prop('title', chrome.i18n.getMessage('global_title_btn_remove_bg'));
 
     // background top
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
     btnAddBgChat.html(chrome.i18n.getMessage('chat_btn_add_bg') + ' <span class="glyphicon glyphicon-upload" aria-hidden="true"></span>');
     btnAddBgChat.prop('title', chrome.i18n.getMessage('chat_title_btn_add_bg'));
     btnTypeBgChat.html(chrome.i18n.getMessage('input_type_url') + ' <span class="caret"></span>');
-    valueBgChat.prop('placeholder', chrome.i18n.getMessage('placeholder_input_url'));
+    valueBgChat.prop('placeholder', chrome.i18n.getMessage('chat_placeholder_input_url'));
     btnRemoveBgChat.prop('title', chrome.i18n.getMessage('chat_title_btn_remove_bg'));
 
     // panel header
@@ -120,32 +120,29 @@ document.addEventListener('DOMContentLoaded', function () {
     $('#type_bg li').click(function(){
         btnTypeBg.html($(this).text() + ' <span class="caret"></span>');
         valueBg.val('');
+        valueBg.off('click.prevent');
+        btnAddBg.prop('disabled', true);
 
         if($(this).hasClass('type_color')){
             valueBg.prop('placeholder', chrome.i18n.getMessage('placeholder_input_color'));
             valueBg.prop('type', 'text');
-            btnAddBg.prop('disabled', true);
             valueBg.colorpicker().on('changeColor', function(e) {
                 funcAdd(constants.BG_GLOBAL.add, {bgColor: e.color.toString()});
             });
         }
         else{
             if(valueBg.hasClass('colorpicker-element')) valueBg.colorpicker('destroy');
-            btnAddBg.prop('disabled', false);
-            btnAddBg.off('click.type_file').off('click.type_url');
 
             if($(this).hasClass('type_url')){
-                valueBg.prop('placeholder', chrome.i18n.getMessage('placeholder_input_url'));
+                valueBg.prop('placeholder', chrome.i18n.getMessage('global_placeholder_input_url'));
                 valueBg.prop('type', 'url');
-                btnAddBg.on('click.type_url', function(){
-                    funcAdd(constants.BG_GLOBAL.add, {imgUrl: valueBg.val()});
-                });
+                btnAddBg.prop('disabled', false);
             }
             else if($(this).hasClass('type_file')){
                 valueBg.prop('placeholder', chrome.i18n.getMessage('placeholder_input_file'));
                 valueBg.prop('type', 'file');
 
-                valueBg.one('click.prevent1', function(e){
+                valueBg.on('click.prevent', function(e){
                     e.preventDefault();
                     funcAdd(constants.BG_GLOBAL.add_by_file);
                 });
@@ -160,32 +157,29 @@ document.addEventListener('DOMContentLoaded', function () {
     $('#type_bg_chat li').click(function(){
         btnTypeBgChat.html($(this).text() + ' <span class="caret"></span>');
         valueBgChat.val('');
+        valueBgChat.off('click.prevent');
+        btnAddBgChat.prop('disabled', true);
 
         if($(this).hasClass('type_color')){
             valueBgChat.prop('placeholder', chrome.i18n.getMessage('placeholder_input_color'));
             valueBgChat.prop('type', 'text');
-            btnAddBgChat.prop('disabled', true);
             valueBgChat.colorpicker().on('changeColor', function(e) {
                 funcAdd(constants.BG_CHAT.add, {bgColor: e.color.toString()});
             });
         }
         else{
             if(valueBgChat.hasClass('colorpicker-element')) valueBgChat.colorpicker('destroy');
-            btnAddBgChat.prop('disabled', false);
-            btnAddBgChat.off('click.type_file').off('click.type_url');
 
             if($(this).hasClass('type_url')){
-                valueBgChat.prop('placeholder', chrome.i18n.getMessage('placeholder_input_url'));
+                valueBgChat.prop('placeholder', chrome.i18n.getMessage('chat_placeholder_input_url'));
                 valueBgChat.prop('type', 'url');
-                btnAddBgChat.on('click.type_url', function(){
-                    funcAdd(constants.BG_CHAT.add, {imgUrl: valueBgChat.val()});
-                });
+                btnAddBgChat.prop('disabled', false);
             }
             else if($(this).hasClass('type_file')){
                 valueBgChat.prop('placeholder', chrome.i18n.getMessage('placeholder_input_file'));
                 valueBgChat.prop('type', 'file');
 
-                valueBgChat.one('click.prevent', function(e){
+                valueBgChat.on('click.prevent', function(e){
                     e.preventDefault();
                     funcAdd(constants.BG_CHAT.add_by_file);
                 });

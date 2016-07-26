@@ -57,7 +57,7 @@
 
     // background global
     "global_btn_add_bg": {
-        "message": "Fundo da Tela",
+        "message": "Adicionar",
         "description": "Botão para mudar o fundo."
     },
     "global_title_btn_add_bg": {
@@ -66,12 +66,16 @@
     },
     "global_title_btn_remove_bg": {
         "message": "Remover fundo",
-        "description": "Atributo title para remover fundo do fundo."
+        "description": "Atributo title para remover fundo da tela."
+    },
+    "global_placeholder_input_url": {
+        "message": "Tela: URL da imagem",
+        "description": "Atributo placeholder do input."
     },
     
     // background chat
     "chat_btn_add_bg": {
-        "message": "Fundo do chat",
+        "message": "Adicionar",
         "description": "Botão para mudar o fundo do chat."
     },
     "chat_title_btn_add_bg": {
@@ -81,6 +85,10 @@
     "chat_title_btn_remove_bg": {
         "message": "Remover fundo chat",
         "description": "Atributo title para remover fundo do fundo do chat."
+    },
+    "chat_placeholder_input_url": {
+        "message": "Chat: URL da imagem",
+        "description": "Atributo placeholder do input."
     },
 
     // panel header
