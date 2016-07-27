@@ -7,6 +7,7 @@ chrome.runtime.getBackgroundPage(function(window){
 
 
 document.addEventListener('DOMContentLoaded', function () {
+    $('#name').text(chrome.i18n.getMessage('name'));
     $('#message_warning').text(chrome.i18n.getMessage('message_warning'));
 
     //input types

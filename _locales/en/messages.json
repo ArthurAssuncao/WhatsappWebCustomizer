@@ -50,7 +50,7 @@
         "description": "Input placeholder."
     },
     "placeholder_input_color": {
-        "message": "Background Color",
+        "message": "Color",
         "description": "Input placeholder."
     },
 
@@ -86,7 +86,7 @@
         "message": "Remove Background Chat",
         "description": "Title to remove the background chat."
     },
-    "global_placeholder_input_url": {
+    "chat_placeholder_input_url": {
         "message": "Chat: Image URL",
         "description": "Placeholder input."
     },
@@ -101,11 +101,11 @@
         "description": "Name input panel."
     },
     "panel_placeholder_input_bg": {
-        "message": "Background Color",
+        "message": "Color",
         "description": "Placeholder to the panel input."
     },
     "panel_title_input_bg": {
-        "message": "Background Color",
+        "message": "Color",
         "description": "Title of the input panel."
     },
     "panel_title_btn_remove_bg": {
@@ -119,11 +119,11 @@
         "description": "Input name text panel."
     },
     "chattitle_placeholder_input_textcolor": {
-        "message": "Background Color",
+        "message": "Color",
         "description": "Input placeholder text panel."
     },
     "chattitle_title_input_textcolor": {
-        "message": "Background Color",
+        "message": "Color",
         "description": "Title of the input text panel."
     },
     "chattitle_title_btn_remove_textcolor": {
@@ -141,11 +141,11 @@
         "description": "Name input messages out."
     },
     "messageout_placeholder_input_bg": {
-        "message": "Background Color",
+        "message": "Color",
         "description": "Placeholder input messages out."
     },
     "messageout_title_input_bg": {
-        "message": "Background Color",
+        "message": "Color",
         "description": "Title input message out."
     },
     "messageout_title_btn_remove_bg": {
@@ -159,11 +159,11 @@
         "description": "Name input text message out."
     },
     "textmessageout_placeholder_input_textcolor": {
-        "message": "Background Color",
+        "message": "Color",
         "description": "Placeholder input text message out."
     },
     "textmessageout_title_input_textcolor": {
-        "message": "Background Color",
+        "message": "Color",
         "description": "Title input text message out."
     },
     "textmessageout_title_btn_remove_textcolor": {
@@ -181,11 +181,11 @@
         "description": "Name input messages in."
     },
     "messagein_placeholder_input_bg": {
-        "message": "Background Color",
+        "message": "Color",
         "description": "Placeholder input messages in."
     },
     "messagein_title_input_bg": {
-        "message": "Background Color",
+        "message": "Color",
         "description": "Title input message in."
     },
     "messagein_title_btn_remove_bg": {
@@ -199,11 +199,11 @@
         "description": "Name input text message in."
     },
     "textmessagein_placeholder_input_textcolor": {
-        "message": "Background Color",
+        "message": "Color",
         "description": "Placeholder input text message in."
     },
     "textmessagein_title_input_textcolor": {
-        "message": "Background Color",
+        "message": "Color",
         "description": "Title input text message out."
     },
     "textmessagein_title_btn_remove_textcolor": {

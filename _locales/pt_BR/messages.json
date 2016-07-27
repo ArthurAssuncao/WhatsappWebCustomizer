@@ -50,7 +50,7 @@
         "description": "Input placeholder."
     },
     "placeholder_input_color": {
-        "message": "Cor de fundo",
+        "message": "Cor",
         "description": "Input placeholder."
     },
 
@@ -101,11 +101,11 @@
         "description": "Nome do input do painel."
     },
     "panel_placeholder_input_bg": {
-        "message": "Cor de fundo",
+        "message": "Cor",
         "description": "Placeholder do input do painel."
     },
     "panel_title_input_bg": {
-        "message": "Cor de fundo",
+        "message": "Cor",
         "description": "Atributo title do input do painel."
     },
     "panel_title_btn_remove_bg": {
@@ -119,11 +119,11 @@
         "description": "Nome do input texto do painel."
     },
     "chattitle_placeholder_input_textcolor": {
-        "message": "Cor de fundo",
+        "message": "Cor",
         "description": "Placeholder do input texto do painel."
     },
     "chattitle_title_input_textcolor": {
-        "message": "Cor de fundo",
+        "message": "Cor",
         "description": "Atributo title do input texto do painel."
     },
     "chattitle_title_btn_remove_textcolor": {
@@ -141,11 +141,11 @@
         "description": "Nome do input mensagens Enviadas."
     },
     "messageout_placeholder_input_bg": {
-        "message": "Cor de fundo",
+        "message": "Cor",
         "description": "Placeholder do input mensagens Enviadas."
     },
     "messageout_title_input_bg": {
-        "message": "Cor de fundo",
+        "message": "Cor",
         "description": "Atributo title do input mensagens Enviadas."
     },
     "messageout_title_btn_remove_bg": {
@@ -159,11 +159,11 @@
         "description": "Nome do input texto das mensagens Enviadas."
     },
     "textmessageout_placeholder_input_textcolor": {
-        "message": "Cor de fundo",
+        "message": "Cor",
         "description": "Placeholder do input texto das mensagens Enviadas."
     },
     "textmessageout_title_input_textcolor": {
-        "message": "Cor de fundo",
+        "message": "Cor",
         "description": "Atributo title do input texto das mensagens Enviadas."
     },
     "textmessageout_title_btn_remove_textcolor": {
@@ -181,11 +181,11 @@
         "description": "Nome do input mensagens recebidas."
     },
     "messagein_placeholder_input_bg": {
-        "message": "Cor de fundo",
+        "message": "Cor",
         "description": "Placeholder do input mensagens recebidas."
     },
     "messagein_title_input_bg": {
-        "message": "Cor de fundo",
+        "message": "Cor",
         "description": "Atributo title do input mensagens recebidas."
     },
     "messagein_title_btn_remove_bg": {
@@ -199,11 +199,11 @@
         "description": "Nome do input texto das mensagens recebidas."
     },
     "textmessagein_placeholder_input_textcolor": {
-        "message": "Cor de fundo",
+        "message": "Cor",
         "description": "Placeholder do input texto das mensagens recebidas."
     },
     "textmessagein_title_input_textcolor": {
-        "message": "Cor de fundo",
+        "message": "Cor",
         "description": "Atributo title do input texto das mensagens recebidas."
     },
     "textmessagein_title_btn_remove_textcolor": {
