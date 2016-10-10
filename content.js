@@ -112,6 +112,11 @@ var styleRules = {
             'background-image:none;' +
             '';
         },
+        tail_highlight: function(){
+            return '' +
+            'background-image:none;' +
+            '';
+        },
         contextin: function(values){
             return '' +
             'background: linear-gradient(to right,rgba(255,255,255,0)0%,' + values.bgColor + ' 50%) !important;' +
@@ -120,7 +125,7 @@ var styleRules = {
         contexticon: function(values){
             return '' +
             'background-color:' + hexToRgba('#FFFFFF', 0.20) + ';' +
-            'border-radius: 20%;' 
+            'border-radius: 20%;' +
             '';
         }
     },
@@ -136,6 +141,11 @@ var styleRules = {
             'background-image:none;' +
             '';
         },
+        tail_highlight: function(){
+            return '' +
+            'background-image:none;' +
+            '';
+        },
         contextout: function(values){
             return '' +
             'background: linear-gradient(to right,rgba(255,255,255,0)0%,' + values.bgColor + ' 50%) !important;' +
@@ -144,7 +154,7 @@ var styleRules = {
         contexticon: function(values){
             return '' +
             'background-color:' + hexToRgba('#FFFFFF', 0.20) + ';' +
-            'border-radius: 20%;' 
+            'border-radius: 20%;' +
             '';
         }
     },
