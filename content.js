@@ -397,117 +397,116 @@ storage.get(function(items){
 
 //Add buttons when expand images
 function buttonsImage(){
+    var originalImageWidth;
+    var originalImageHeight;
+
     //call function when expand an image
     document.addEventListener('click', function(e){
         var classes = e.target.className.split(' ');
         for(var i in classes){
             if(classes[i] == constants.BUTTONS_IMG.others.thumbimage){
                 setTimeout(function() {
-                    insertContainerDiv();
+                    setImgOriginalSizes();
+                    insertButtons();
                 }, 450);
             }
         }
     });
 
-    function insertContainerDiv(){
-        var sizeHDiv = 10;
+    function setImgOriginalSizes(){
         var elementImg = document.querySelector(constants.BUTTONS_IMG.selector.image);
 
-        var parent = elementImg.parentNode;
-        parent.style.display = 'flex';
-        parent.style['flex-direction'] = 'row';
-        parent.style['justify-content'] = 'center';
-        parent.style['flex-wrap'] =  'wrap';
-        parent.style.width = '100%';
-        parent.style.height = '100%';
-
-        var newParent = document.createElement('div');
-        newParent.style.height = (100 - sizeHDiv) + '%';
-        newParent.style['padding-bottom'] = '10px';
-        newParent.style.display = 'flex';
-        newParent.style['flex-direction'] = 'row';
-        newParent.style['justify-content'] = 'center';
-        newParent.style['flex-wrap'] =  'wrap';
-        newParent.style.flex = '1 100%';
-
-        elementImg.style['max-width'] = '100%';
-        elementImg.style['max-height'] = '100%';
-        elementImg.style.width = 'initial';
-        elementImg.style.height = 'initial';
-        elementImg.style['align-self'] = 'center';
-        elementImg.style['backface-visibility'] = 'hidden';
-
-        // add new parent
-        parent.replaceChild(newParent, elementImg);
-        newParent.appendChild(elementImg);
-        
-        //Container buttons
-        var div = document.createElement('div');
-        div.style.height = sizeHDiv + '%';
-        div.style['max-height'] = '46px';
-        div.style['min-height'] = '46px';
-        div.style['max-width'] = '150px';
-        div.style['min-width'] = '150px';
-        div.style['z-index'] = '3';
-        div.style.display = 'flex';
-        div.style['justify-content'] = 'center';
-        div.style['align-items'] = 'center';
-        div.style['align-self'] = 'flex-end';
-        div.style['flex'] = '1 100%';
-        
-
-        div.addEventListener('click', function(e){
-            e.stopPropagation();
-        });
-
-        div.appendChild(buttonsRotate().left);
-        div.appendChild(buttonsRotate().right);
-
-        parent.insertBefore(div, newParent.nextSibling);
+        originalImageWidth = elementImg.offsetWidth;
+        originalImageHeight = elementImg.offsetHeight;
     }
 
-    function buttonsRotate(){
+    function insertButtons(){
         var btnRotateRight = document.createElement('button');
-        btnRotateRight.className = 'btn btn-round';
+        btnRotateRight.id='btn_rotate_right';
+        btnRotateRight.className = 'btn btn-round btn-media-next';
         btnRotateRight.innerHTML = '<span class="icon icon-refresh"></span>';
-        btnRotateRight.style.margin = '0 5px';
-        btnRotateRight.style['z-index'] = '3';
+        btnRotateRight.style.marginTop = '20px';
 
         var btnRotateLeft = document.createElement('button');
-        btnRotateLeft.className = 'btn btn-round';
+        btnRotateLeft.id='btn_rotate_left';
+        btnRotateLeft.className = 'btn btn-round btn-media-next';
         btnRotateLeft.innerHTML = '<span class="icon icon-refresh"></span>';
-        btnRotateLeft.style.margin = '0 5px';
-        btnRotateLeft.style['z-index'] = '3';
+        btnRotateLeft.style.marginTop = '5px';
         btnRotateLeft.style.transform = 'rotateY(180deg)';
 
+        btnRotateRight.addEventListener('click', function(e){ e.stopPropagation(); rotateImage('right') });
+        btnRotateLeft.addEventListener('click', function(e){ e.stopPropagation(); rotateImage('left') });
 
-        btnRotateRight.addEventListener('click', function(){ rotateImage(constants.BUTTONS_IMG.selector.image, 'right') });
-        btnRotateLeft.addEventListener('click', function(){ rotateImage(constants.BUTTONS_IMG.selector.image, 'left') });
-        
+        //add wrapper and buttons
+        var btn = document.querySelector('.btn-media-next');
+
+        var parent = btn.parentNode;
+        var wrapper = document.createElement('div');
+
+        parent.replaceChild(wrapper, btn);
+
+        wrapper.appendChild(btn);
+        wrapper.appendChild(btnRotateRight);
+        wrapper.appendChild(btnRotateLeft);
+
+        //add margin top to centralize
+        var marginTop = btnRotateRight.offsetHeight + btnRotateLeft.offsetHeight;
+        marginTop += parseInt(btnRotateRight.style.marginTop.replace('px', '')) + parseInt(btnRotateLeft.style.marginTop.replace('px', ''));
+        wrapper.style.marginTop = marginTop + 'px';
+
         return {left: btnRotateLeft, right: btnRotateRight};
     }
 
-    function rotateImage(selector, side){
-        var elem = document.querySelector(selector);
-        var regExp = /rotate\((-?\w*)deg\)/i; //rotate(...)deg
-        var regResult = elem.style.transform.match(regExp);
+    function rotateImage(side){
+        var elementImg = document.querySelector(constants.BUTTONS_IMG.selector.image);
+
+        //max sizes
+        var containerWidth = elementImg.parentNode.parentNode.offsetWidth;
+        var containerHeight = elementImg.parentNode.parentNode.offsetHeight;
+
+        var parentImg = elementImg.parentNode;
 
         //calc angle
+        var regExp = /rotate\((-?\w*)deg\)/i; //rotate(...)deg
+        var regResult = parentImg.style.transform.match(regExp);
         var angle = side == 'right' ? 90 : (-90);
         if(regResult != null)
             angle += parseInt(regResult[1]);
 
-        var sizeParent = elem.parentNode.getBoundingClientRect();
+        var newHeight;
+        var newWidth;
+        var isHorizontal = angle % 180 ? false : true;
 
-        var width = sizeParent.width;
-        if(Math.abs(angle) / 90 % 2 == 1){ //if vertical
-            width = sizeParent.height;
+        if(isHorizontal){
+            console.log('horizontal');
+            newHeight = originalImageHeight;
+            newWidth = originalImageWidth;
         }
-        elem.style['max-width'] = width+'px';
+        else{
+            //original zises <= container image
+            if(originalImageWidth <= containerHeight && originalImageHeight <= containerWidth){
+                newHeight = originalImageHeight;
+                newWidth = originalImageWidth;
+            }
+            //original width zise > container height image
+            else if(originalImageWidth > containerHeight){
+                console.log('ok 1');
+                newWidth = containerHeight;
+                newHeight = originalImageHeight * containerHeight / originalImageWidth;
+            }
+            //original height zise > container width image
+            else if(originalImageHeight > containerWidth){
+                console.log('ok 2');
+                newHeight = containerWidth;
+                newWidth = originalImageWidth * containerWidth / originalImageHeight;
+            }
 
-        document.querySelector(constants.BUTTONS_IMG.selector.image).style['transform-origin'] = 'initial';
+        }
 
-        elem.style.transform = 'rotate(' + angle + 'deg)';
+        parentImg.style.width = newWidth + 'px';
+        parentImg.style.height = newHeight + 'px';
+
+        parentImg.style.transform = 'rotate(' + angle + 'deg)';
     }
 }
 

@@ -30,7 +30,7 @@
 
     // input types
     "input_type_url": {
-        "message": "Url",
+        "message": "URL",
         "description": "Input type."
     },
     "input_type_file": {
