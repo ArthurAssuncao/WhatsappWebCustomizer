@@ -32,6 +32,15 @@ A extensão funciona apenas nas páginas do Whatsapp Web, não podendo ser usada
 </p>
 
 ## Change log:
+1.0.8
+- Corrigida rotação da imagem
+
+1.0.7
+- Correções
+
+1.0.6
+- Correções
+
 1.0.3
 - Código reescrito
 - Adicionada função para mudar fundo. (Por URL, local ou cor).

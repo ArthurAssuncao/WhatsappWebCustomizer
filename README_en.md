@@ -32,6 +32,15 @@ The extension works only in Whatsapp Web pages may not be used from other pages.
 </p>
 
 ## Change log:
+1.0.8
+- Fixed: image rotation
+
+1.0.7
+- Small Fixes
+
+1.0.6
+- Small Fixes
+
 1.0.3
 - Code rewritten
 - Background change option added. (By URL, local or color).
