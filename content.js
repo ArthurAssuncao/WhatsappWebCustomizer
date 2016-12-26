@@ -298,6 +298,57 @@ function removeConfig(storageObj){
     });
 }
 
+function executeImportConfig(){
+    function fileChooser(){
+        var fileChooser = document.createElement('input');
+        fileChooser.type = 'file';
+        fileChooser.addEventListener('change', function(){
+            readFileConfig(this, function(content){
+                try{
+                    let configObj = JSON.parse(content);
+
+                    storage.clear();
+                    storage.set(configObj);
+
+                    alert(chrome.i18n.getMessage('message_warning'));
+                }
+                catch(e){
+                    alert(chrome.i18n.getMessage('alert_error_read_file'));
+                }
+            });
+        });
+        fileChooser.click();
+    }
+
+    function readFileConfig(element, callback) {
+        if (element.files && element.files[0]) {
+            if(!element.files[0].type.startsWith('application/json')){
+                alert(chrome.i18n.getMessage('alert_file_type_import_config'));
+            }
+            else if(element.files[0].size > 5 * 1000000){ // > 5MB
+                alert(chrome.i18n.getMessage('alert_file_size_import_config'));
+            }
+            else{
+                var FR = new FileReader();
+                FR.onload = function(e) {
+                    var content = e.target.result;
+                    callback(content);
+                }
+                FR.readAsBinaryString( element.files[0] );
+            }
+        }
+    }
+
+    fileChooser();
+}
+
+function executeExportConfig(){
+    storage.get(function(items){
+        const fileName = (chrome.i18n.getMessage('name') + " config").replace(/ /g, "_").toLowerCase() + ".json";
+        fileSave(items, fileName, "application/json");
+    });
+}
+
 /* Listen for messages */
 chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
@@ -373,6 +424,13 @@ chrome.runtime.onMessage.addListener(
     }
     else if(option == constants.CHAT_TITLE.remove){
         removeConfig(configurations.chatTitle.storage);
+    }
+
+    else if(option == constants.IMPORT_CONFIG){
+        executeImportConfig();
+    }
+    else if(option == constants.EXPORT_CONFIG){
+        executeExportConfig();
     }
 
     else if(option == constants.DELETE_CONFIG){
@@ -478,7 +536,6 @@ function buttonsImage(){
         var isHorizontal = angle % 180 ? false : true;
 
         if(isHorizontal){
-            console.log('horizontal');
             newHeight = originalImageHeight;
             newWidth = originalImageWidth;
         }
@@ -490,13 +547,11 @@ function buttonsImage(){
             }
             //original width zise > container height image
             else if(originalImageWidth > containerHeight){
-                console.log('ok 1');
                 newWidth = containerHeight;
                 newHeight = originalImageHeight * containerHeight / originalImageWidth;
             }
             //original height zise > container width image
             else if(originalImageHeight > containerWidth){
-                console.log('ok 2');
                 newHeight = containerWidth;
                 newWidth = originalImageWidth * containerWidth / originalImageHeight;
             }
@@ -524,14 +579,14 @@ function fileChooser(option, key){
     var fileChooser = document.createElement('input');
     fileChooser.type = 'file';
     fileChooser.addEventListener('change', function(){
-        readLocalImg(this, function(imgB64){
+        readLocalImage(this, function(imgB64){
             executeOption(option, {[key]: imgB64});
         });
     });
     fileChooser.click();
 }
 
-function readLocalImg(element, callback) {
+function readLocalImage(element, callback) {
     if (element.files && element.files[0]) {
         if(!element.files[0].type.startsWith('image')){
             alert(chrome.i18n.getMessage('alert_type_file_error'));
@@ -548,4 +603,24 @@ function readLocalImg(element, callback) {
             FR.readAsDataURL( element.files[0] );
         }
     }
+}
+
+function fileSave(content, fileName, contentType){
+    content = content || "";
+    fileName = fileName || "download.json";
+    contentType = contentType || "application/json";
+
+    const text = JSON.stringify(content);
+    const textBlob = new Blob([text], {type: contentType});
+    const textURL = window.URL.createObjectURL(textBlob);
+
+    var downloadElem = document.createElement("a");
+    downloadElem.download = fileName;
+    downloadElem.innerHTML = "";
+    downloadElem.href = textURL;
+    downloadElem.style.display = "none";
+    downloadElem.onclick = function(){};
+    document.body.appendChild(downloadElem);
+
+    downloadElem.click();
 }

@@ -27,6 +27,19 @@
         "message": "Seleciona apenas imagens com tamanho de até 1.5 MB.",
         "description": "Alerta para arquivo tamanho errado."
     },
+    "alert_file_type_import_config": {
+        "message": "Selecione um arquivo com extensão .json",
+        "description": "Alerta para arquivo com extensão errada."
+    },
+    "alert_file_size_import_config": {
+        "message": "Selecione um arquivo .json com tamanho de até 5MB",
+        "description": "Alerta para arquivo com tamanho errado."
+    },
+
+    "alert_error_read_file": {
+        "message": "Erro ao ler o arquivo.",
+        "description": "Alerta ao ler um arquivo não suportado."
+    },
 
     // input types
     "input_type_url": {

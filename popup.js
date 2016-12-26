@@ -114,14 +114,14 @@ document.addEventListener('DOMContentLoaded', function () {
     btnRestoreDefault.prop('title', chrome.i18n.getMessage('restoredefault_title'));
 
     //import config
-    var btnRestoreDefault = $('#btn_import_config');
-    btnRestoreDefault.text(chrome.i18n.getMessage('import_config_btn'));
-    btnRestoreDefault.prop('title', chrome.i18n.getMessage('import_config_title'));
+    var btnImportConfig = $('#btn_import_config');
+    btnImportConfig.text(chrome.i18n.getMessage('import_config_btn'));
+    btnImportConfig.prop('title', chrome.i18n.getMessage('import_config_title'));
 
     //export config
-    var btnRestoreDefault = $('#btn_export_config');
-    btnRestoreDefault.text(chrome.i18n.getMessage('export_config_btn'));
-    btnRestoreDefault.prop('title', chrome.i18n.getMessage('export_config_title'));
+    var btnExportConfig = $('#btn_export_config');
+    btnExportConfig.text(chrome.i18n.getMessage('export_config_btn'));
+    btnExportConfig.prop('title', chrome.i18n.getMessage('export_config_title'));
 
 
     //bg global
@@ -222,6 +222,10 @@ document.addEventListener('DOMContentLoaded', function () {
         funcAdd(constants.CHAT_TITLE.add, {color: e.color.toHex()});
     });
 
+    btnImportConfig.on('click', function(){ funcAdd(constants.IMPORT_CONFIG) });
+    btnExportConfig.on('click', function(){ funcAdd(constants.EXPORT_CONFIG) });
+
+
     btnRemoveBg.on('click', function(){ funcRemove(constants.BG_GLOBAL.remove) });
     //btnRemoveBgTop.on('click', function(){ funcRemove(constants.BG_GLOBAL_TOP.remove) });
     btnRemoveBgChat.on('click', function(){ funcRemove(constants.BG_CHAT.remove) });
@@ -232,7 +236,7 @@ document.addEventListener('DOMContentLoaded', function () {
     btnRemoveTextMessageIn.on('click', function(){ funcRemove(constants.TEXT_MESSAGE_IN.remove) });
     btnRemoveTextMessageOut.on('click', function(){ funcRemove(constants.TEXT_MESSAGE_OUT.remove) });
     btnRemoveChatTitle.on('click', function(){ funcRemove(constants.CHAT_TITLE.remove) });
-    
+
     btnRestoreDefault.on('click', function(){ funcRemove(constants.DELETE_CONFIG) });
 });
 
