@@ -219,5 +219,25 @@
     "restoredefault_title": {
         "message": "Restaura para o padrão",
         "description": "title para restaurar para o padrão."
+    },
+
+    // import config
+    "import_config_btn": {
+        "message": "Importar",
+        "description": "Botão para importar configuração."
+    },
+    "import_config_title": {
+        "message": "Importar configuração",
+        "description": "title para importar configuração."
+    },
+
+    // export config
+    "export_config_btn": {
+        "message": "Exportar",
+        "description": "Botão para exportar configuração."
+    },
+    "export_config_title": {
+        "message": "Exportar configuração",
+        "description": "title para exportar configuração."
     }
 }

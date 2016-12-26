@@ -219,5 +219,25 @@
     "restoredefault_title": {
         "message": "Restore to default",
         "description": "Title button restore default."
+    },
+
+    // import config
+    "import_config_btn": {
+        "message": "Import",
+        "description": "Button to import configuration."
+    },
+    "import_config_title": {
+        "message": "Import configuration",
+        "description": "Title button import configuration."
+    },
+
+    // export config
+    "export_config_btn": {
+        "message": "Export",
+        "description": "Button to export configuration."
+    },
+    "export_config_title": {
+        "message": "Export configuration",
+        "description": "Title button export configuration."
     }
 }

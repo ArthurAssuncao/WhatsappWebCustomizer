@@ -113,6 +113,16 @@ document.addEventListener('DOMContentLoaded', function () {
     btnRestoreDefault.text(chrome.i18n.getMessage('restoredefault_btn'));
     btnRestoreDefault.prop('title', chrome.i18n.getMessage('restoredefault_title'));
 
+    //import config
+    var btnRestoreDefault = $('#btn_import_config');
+    btnRestoreDefault.text(chrome.i18n.getMessage('import_config_btn'));
+    btnRestoreDefault.prop('title', chrome.i18n.getMessage('import_config_title'));
+
+    //export config
+    var btnRestoreDefault = $('#btn_export_config');
+    btnRestoreDefault.text(chrome.i18n.getMessage('export_config_btn'));
+    btnRestoreDefault.prop('title', chrome.i18n.getMessage('export_config_title'));
+
 
     //bg global
     btnAddBg.on('click.type_url', function(){
