@@ -11,6 +11,10 @@
         "message" : "Atualize a página para concluir a operação.",
         "description": "Mensagem de aviso."
     },
+    "message_incompatible_file": {
+        "message": "Este arquivo é incompatível, selecione outro.",
+        "description": "Mensagem arquivo incompativel."
+    },
     "question_remove_item": {
         "message": "Tem certeza que deseja remover esse item?",
         "description": "Remover item pergunta."

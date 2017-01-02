@@ -305,7 +305,13 @@ function executeImportConfig(){
         fileChooser.addEventListener('change', function(){
             readFileConfig(this, function(content){
                 try{
-                    let configObj = JSON.parse(content);
+                    const configObj = JSON.parse(content);
+
+                    const extensionIdentifier = 'wpp_web';
+                    if (!(extensionIdentifier in configObj)){
+                        alert(chrome.i18n.getMessage('message_incompatible_file'));
+                        return;
+                    }
 
                     storage.clear();
                     storage.set(configObj);
@@ -322,7 +328,7 @@ function executeImportConfig(){
 
     function readFileConfig(element, callback) {
         if (element.files && element.files[0]) {
-            if(!element.files[0].type.startsWith('application/json')){
+            if(!element.files[0].type.startsWith('application/json') && !element.files[0].name.endsWith('.json')){
                 alert(chrome.i18n.getMessage('alert_file_type_import_config'));
             }
             else if(element.files[0].size > 5 * 1000000){ // > 5MB
@@ -345,6 +351,11 @@ function executeImportConfig(){
 function executeExportConfig(){
     storage.get(function(items){
         const fileName = (chrome.i18n.getMessage('name') + " config").replace(/ /g, "_").toLowerCase() + ".json";
+
+        //create identification key
+        const extensionIdentifier = 'wpp_web';
+        items[extensionIdentifier] = chrome.runtime.getManifest().version;
+
         fileSave(items, fileName, "application/json");
     });
 }

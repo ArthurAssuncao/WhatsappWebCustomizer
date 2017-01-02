@@ -11,6 +11,10 @@
         "message" : "Reload the page to complete the operation.",
         "description": "Warning message."
     },
+    "message_incompatible_file": {
+        "message": "This file is incompatible, select another.",
+        "description": "Incompatible file message."
+    },
     "question_remove_item": {
         "message": "Are you sure you want to remove this item?",
         "description": "Remove item question."
