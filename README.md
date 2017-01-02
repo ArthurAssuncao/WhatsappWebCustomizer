@@ -32,6 +32,9 @@ A extensão funciona apenas nas páginas do Whatsapp Web, não podendo ser usada
 </p>
 
 ## Change log:
+1.1.0
+- Adicionado função para importar e exportar configuração
+
 1.0.8
 - Corrigida rotação da imagem
 

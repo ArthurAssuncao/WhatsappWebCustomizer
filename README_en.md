@@ -32,6 +32,9 @@ The extension works only in Whatsapp Web pages may not be used from other pages.
 </p>
 
 ## Change log:
+1.1.0
+- Added function to import and export configuration.
+
 1.0.8
 - Fixed: image rotation
 
