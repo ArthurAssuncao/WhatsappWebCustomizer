@@ -32,6 +32,9 @@ The extension works only in Whatsapp Web pages may not be used from other pages.
 </p>
 
 ## Change log:
+1.1.2
+- Small Fix
+
 1.1.1
 - Fix import configuration
 

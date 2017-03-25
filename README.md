@@ -32,6 +32,9 @@ A extensão funciona apenas nas páginas do Whatsapp Web, não podendo ser usada
 </p>
 
 ## Change log:
+1.1.2
+- Pequena correção
+
 1.1.1
 - Corrigido importar configuração
 
